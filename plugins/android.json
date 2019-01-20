@@ -1,0 +1,27 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.phonegap.bookshelf"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.phonegap.bookshelf"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.phonegap.bookshelf"
+        },
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "com.phonegap.bookshelf"
+        },
+        "cordova-plugin-autostart": {
+            "PACKAGE_NAME": "com.phonegap.bookshelf"
+        }
+    },
+    "dependent_plugins": {}
+}

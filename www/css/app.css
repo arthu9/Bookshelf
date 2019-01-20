@@ -1,0 +1,130 @@
+/* Your app styles here */
+
+/* Left Panel right border when it is visible by breakpoint */
+.panel-left.panel-visible-by-breakpoint:before {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background: rgba(0,0,0,0.1);
+  content: '';
+  z-index: 6000;
+}
+
+/* Hide navbar link which opens left panel when it is visible by breakpoint */
+.panel-left.panel-visible-by-breakpoint ~ .view .navbar .panel-open[data-panel="left"] {
+  display: none;
+}
+
+/*
+  Extra borders for main view and left panel for iOS theme when it behaves as panel (before breakpoint size)
+  */
+  .ios .panel-left:not(.panel-visible-by-breakpoint).panel-active ~ .view-main:before,
+  .ios .panel-left:not(.panel-visible-by-breakpoint).panel-closing ~ .view-main:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: rgba(0,0,0,0.1);
+    content: '';
+    z-index: 6000;
+  }
+
+  /* A bit of demo styles */;
+  .demo-swiper .swiper-slide {
+    font-size: 25px;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    color: #000;
+  }
+  .demo-swiper .swiper-slide {
+    background: #fff;
+  }
+  .demo-swiper {
+    margin: 0px 0 5px;
+    font-size: 18px;
+    height: 150px;
+  }
+  .demo-swiper.demo-swiper-auto .swiper-slide {
+    width: 70%;
+  }
+  .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
+    width: 70%;
+  }
+  .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
+    width: 30%;
+  }
+
+  div[class*="col"] {
+    height: 35%
+  }
+
+  .container {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 10%;
+  }
+
+  a .container{
+    text-align: center;
+    text-decoration: none;
+  }
+
+  a.icons i {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .image-holder{
+    margin: 0;
+    background: #673ab7;
+    width: 100% !important;
+    height: 50% !important;
+    text-align: center;
+    padding: 5% 0;
+  }
+
+  .round{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  .comment-image{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+  }
+
+  .round-title{
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .comment-box{
+    width: 100%;
+    background: #f7f7f7;
+    border-radius: 2%;
+  }
+
+  .row.no-gap{
+    padding: 2%;
+    opacity: 50%;
+  }
+.swiper-slide{
+   border: #000 2px;
+   border-width: initial;
+}
+input.searchEdit {
+  color: black !important;
+  background: white;
+}

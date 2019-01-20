@@ -1,0 +1,197 @@
+  <!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <meta name="theme-color" content="#2196f3">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <title>Bookhelf</title>
+        <link rel="stylesheet" href="framework7/css/framework7.min.css">
+        <link rel="stylesheet" href="framework7/css/framework7.material.colors.min.css">
+        <link rel="stylesheet" href="framework7/css/framework7-icons.css">
+        <link rel="stylesheet" href="css/item.css">
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" href="css/app.css">
+  </head>
+      <body class="theme-deeppurple" onload="books()">
+        <div id="app">
+          <!-- Status bar overlay for fullscreen mode-->
+          <div class="statusbar"></div>
+          <!-- Left panel with reveal effect when hidden -->
+          <div class="panel panel-left panel-cover">
+            <div class="view view-left">
+              <div class="page">
+                <div class="navbar">
+                  <div class="navbar-inner sliding">
+                    <div class="title">Bookshelf</div>
+                  </div>
+                </div>                
+                <div class="page-content">
+                  <!-- Profile here -->
+                  <a href="/userprof/" data-view=".view-main" class="panel-close"><h1>Profile</h1></a>
+                  <div class="block-title">Categories</div>
+                  <div class="list links-list">
+                    <ul>
+                      <li>
+                        <a href="/educational/" data-view=".view-main" class="panel-close">Educational</a>
+                      </li>
+                      <li>
+                        <a href="/fictional/" data-view=".view-main" class="panel-close">Fiction</a>
+                      </li>
+                      <li>
+                        <a href="/non-fictional/" data-view=".view-main" class="panel-close">Non-fiction</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right panel with cover effect -->
+
+
+          <!-- Your main view, should have "view-main" class -->
+          <div class="view view-main ios-edges">
+            <!-- Page, data-name contains page name which can be used in callbacks -->
+            <div class="page" data-name="home">
+              <!-- Top Navbar -->
+              <div class="navbar">
+                <div class="navbar-inner">
+                  <div class="left">
+                    <a href="#" class="link icon-only panel-open" data-panel="left">
+                      <i class="icon f7-icons ios-only">menu</i>
+                      <i class="icon material-icons md-only">menu</i>
+                    </a>
+                  </div>
+                  <div class="title">Bookshelf</div>
+                    <!-- Link to enable searchbar -->
+                  <div class="right">
+                    <!-- Link to enable searchbar -->
+                    <a class="link icon-only searchbar-enable" data-searchbar=".searchbar">
+                      <i class="icon material-icons md-only">search</i>
+                    </a>
+                  </div>
+                  <form class="searchbar searchbar-expandable">
+                    <div class="searchbar-inner">
+                      <div class="searchbar-input-wrap">
+                        <input type="search" id="search" onchange="search()" placeholder="Search" class="searchEdit" />
+                        <i class="searchbar-icon"></i>
+                        <span class="input-clear-button"></span>
+                      </div>
+                      <span class="searchbar-disable-button"></span>
+                    </div>
+                  </form>
+                  <!-- Searchbar is a direct child of "navbar-inner" -->
+                </div>
+              </div>
+                <div class="toolbar tabbar no shadow toolbar-bottom-md">
+                  <div class="toolbar-inner">
+                    <a href="#tab-1" class="tab-link tab-link-active">
+                      <i class="f7-icons">home</i>
+                    </a>
+                    <a href="#tab-2" class="tab-link">
+                      <i class="f7-icons">book</i>
+                    </a>
+                    <a href="#tab-3" class="tab-link">
+                       <i class="f7-icons">settings</i>
+                    </a>
+                  </div>
+                </div>
+              <!-- Toolbar-->
+              <!-- Scrollable page content-->
+              <div class="page-content" style="padding-top: 1% !important; margin-top: 1% !important;">
+                <div class="tabs-swipeable-wrap" data-touch-move-stop-propagation="false">
+                  <div class="tabs" data-touch-move-stop-propagation="false">
+                    <div id="tab-1" class="page-content tab tab-active" data-touch-move-stop-propagation="false">
+                      <div class="block">
+                        <div class="block-title searchbar-hide-on-search">
+                        <div class="block title"  style="font-weight: bolder">
+                          Top Rated
+                        </div>
+                        <div id="rated" class="row">
+                          <div data-touch-move-stop-propagation="false" data-space-between="10"
+                          data-slides-per-view="3" class="swiper-container swiper-init demo-swiper">
+                            EMPTY
+                          </div>
+                        </div>
+                        <div class="block title"  style="font-weight: bolder">Latest Edition</div>
+                        <div class="row">
+                          <div data-touch-move-stop-propagation="false" data-space-between="10"
+                          data-slides-per-view="3" class="swiper-container swiper-init demo-swiper">
+                          <div id="borrow" class="swiper-wrapper">
+                          </div>
+                          </div>
+                        </div>
+                        <div class="block title"  style="font-weight: bolder">Recently added</div>
+                        <div class="row" >
+                          <div data-touch-move-stop-propagation="false" data-space-between="10"
+                          data-slides-per-view="3" class="swiper-container swiper-init demo-swiper" >
+                            <div id="new" class="swiper-wrapper">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                        <div class="list searchbar-found">
+                          <ul id="books">
+                            <!-- <li class="item-content">
+                              <div class="item-inner">
+                                <div class="item-title">Acura</div>
+                              </div>
+                            </li> -->
+                          </ul>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  <div id="tab-2" class="page-content tab">
+                  <div class="block-title">books</div>
+                  <div class="block" >
+                     <div class="row" id="allbook" >
+                      
+                     </div>
+                     </div>
+                    </div>
+                
+                    <div id="tab-3" class="page-content tab">
+                     <div class="block">
+                     <div class="row">
+                        <button class="button button-big button-fill color-deeppurple" style="margin-bottom:5%">Edit Profile</button>
+                        <button class="button-logout button button-big button-fill color-red">Log out</button>
+                     </div>
+                     </div>
+                    </div>
+                  </div>
+                  <div class="fab fab-right-bottom">
+                     <a href="/form/">
+                        <i class="icon f7-icons">add</i>
+                     </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Framework7 library -->
+        <script src="framework7/js/framework7.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <!-- App routes -->
+        <script src="js/moment.js"></script>
+        <script src="js/routes.js"></script>
+        <!-- Your custom app scripts -->
+        <script src="js/app.js"></script>
+      </body>
+</html>

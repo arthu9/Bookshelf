@@ -1,5 +1,5 @@
-<div class="page" data-name="login">
-  <div class="navbar">
+<div class="page" data-name="signup">
+  <!-- <div class="navbar">
     <div class="navbar-inner sliding">
       <div class="left">
         <a href="#" class="link back">
@@ -7,75 +7,163 @@
           <span class="ios-only">Back</span>
         </a>
       </div>
-      <div class="title">Sign up</div>
-      <div class="right">
-        <!-- Link to enable searchbar -->
-        <a class="link icon-only searchbar-enable" data-searchbar=".searchbar">
-          <i class="icon f7-icons ios-only">search_strong</i>
-          <i class="icon material-icons md-only">search</i>
-        </a>
-      </div>
-      <!-- Searchbar is a direct child of "navbar-inner" -->
-      <form class="searchbar searchbar-expandable">
-        <div class="searchbar-inner">
-          <div class="searchbar-input-wrap">
-            <input type="search" placeholder="Search"/>
-            <i class="searchbar-icon"></i>
-            <span class="input-clear-button"></span>
-          </div>
-          <span class="searchbar-disable-button">Cancel</span>
-        </div>
-      </form>
+      <div class="title">Sign Up</div>
     </div>
-  </div>
+  </div> -->
   <div class="page-content">
-    <div data-touch-move-stop-propagation="false" class="swiper-container swiper-init demo-swiper">
-  <div class="swiper-pagination"></div>
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <form>
-          <div class="list">
-            <ul>
-              <li class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">Username</div>
-                  <div class="item-input-wrap">
-                    <input type="text" name="username" placeholder="Username" required validate>
-                    <span class="input-clear-button"></span>
-                  </div>
-                </div>
-              </li>
-              <li class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">Password</div>
-                  <div class="item-input-wrap">
-                    <input type="password" name="password" placeholder="Password" required validate>
-                    <span class="input-clear-button"></span>
-                  </div>
-                </div>
-              </li>
-            </ul>
+    <div class="list no-hairlines-md">
+      <div class="login-screen-title">
+        Sign Up
+      </div>
+      <div id="signUp1" style="display: block;">
+    <div class="block-title">Account Information</div>
+      <ul>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Username</div>
+              <div class="item-input-wrap">
+                <input type="text" placeholder="Enter desired username" name="username" id="username" required validator />
+              </div>
+            </div>
           </div>
-          <div class="list">
-            <ul>
-              <li>
-                <a href="#" class="item-link list-button" onclick="login()">Sign In</a>
-              </li>
-            </ul>
-            <div class="block-footer">Some text with login information.</div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Password</div>
+              <div class="item-input-wrap">
+                <input type="password" placeholder="Enter desired password" id="password" name="password" required validator />
+              </div>
+            </div>
           </div>
-        </form>
+        </li>
+      </ul>
+      <br>
+      <div class="block">
+        <div class="row">
+          <a type="button" style="width: 50% ;margin-right: auto !important; margin-left: auto !important; background: red !important;" class="col button button-round button-fill link back">Cancel</a>
+          <button type="button" style="width: 50% ;margin-right: auto !important; margin-left: auto !important;" class="col button button-round button-fill" onclick="signUp1();">Next</button>
+          </div>
+      </div>
+      </div>
+
+      <div id="signUp2" style="display: none;">
+    <div class="block-title">Personal Information</div>
+      <ul>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">First Name</div>
+              <div class="item-input-wrap">
+                <input type="text" placeholder="Enter first name" id="first_name" name="first_name" required validator />
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Last Name</div>
+              <div class="item-input-wrap">
+                <input type="text" placeholder="Enter last name" id="last_name" name="last_name" required validator />
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Gender</div>
+              <div class="item-input-wrap">
+                <select name="gender" id="gender">
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label" >Birth date</div>
+              <div class="item-input-wrap">
+                <input id="birthdate" name="birthdate" type="date" placeholder="Birth day" value="2014-04-30"/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label" >Profile Pic</div>
+              <div class="item-input-wrap">
+                <center>
+                  <div onchange="uploadCheck();">
+                   <label id="uploadLabel" class="upload" style="background: red;"> 
+                    <i class="f7-icons">camera_fill</i>
+                    Upload Image
+                    <input type="file" id="uploadBox" size="60" accept="image/*">
+                   </label> 
+                  </div>
+                </center>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <br>
+      <div class="block">
+          <div class="row">
+            <button type="button" style="width: 50% ;margin-right: auto !important; margin-left: auto !important;" class="col button button-round button-fill" onclick="signUp2();">Prev</button>
+            <button type="button" style="width: 50% ;margin-right: auto !important; margin-left: auto !important;" class="col button button-round button-fill" onclick="signUp3();">Next</button>
+          </div>
+          </div>
+
+      </div>
+      <div id="signUp3" style="display: none;">
+    <div class="block-title">Personal Information</div>
+      <ul>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Contact Number</div>
+              <div class="item-input-wrap">
+                <input type="text" placeholder="Enter contact number" id="contact_number" name="contact_number" required validator pattern="[0-9]{11}" />
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Address</div>
+              <div class="item-input-wrap">
+                <input type="text" placeholder="Enter address" id="address" name="address" required validator />
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Email</div>
+              <div class="item-input-wrap">
+                <input type="email" placeholder="Enter email address" id="email" name="email" required validator />
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <br>
+      <div class="block">
+        <div class="row">
+          <button type="button" style="width: 50% ;margin-right: auto !important; margin-left: auto !important;" class="col button button-round button-fill" onclick="signUp4();">Prev</button>
+          <button onclick="signup0();" style="width: 50% ;margin-right: auto !important; margin-left: auto !important;" class="col button button-round button-fill" id="signup">Register</button>
+        </div>
+      </div>
+      </div>
     </div>
-    <div class="swiper-slide">Slide 2</div>
-    <div class="swiper-slide">Slide 3</div>
-    <div class="swiper-slide">Slide 4</div>
-    <div class="swiper-slide">Slide 5</div>
-    <div class="swiper-slide">Slide 6</div>
-    <div class="swiper-slide">Slide 7</div>
-    <div class="swiper-slide">Slide 8</div>
-    <div class="swiper-slide">Slide 9</div>
-    <div class="swiper-slide">Slide 10</div>
-  </div>
-</div>
   </div>
 </div>

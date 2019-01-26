@@ -106,7 +106,7 @@ function createLogin(){
         if(username != '' && password !='' ){
         app.request({
             async: true, 
-            url: 'https://desolate-basin-69053.herokuapp.com/login',
+            url: 'http://127.0.0.1:5000/login',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify({
                 'username': username,
@@ -276,7 +276,7 @@ function signup0(){
         var password = $("#password").val();
         var address = $("#address").val();
         $.ajax({
-          url: "https://desolate-basin-69053.herokuapp.com/signup",
+          url: "http://127.0.0.1:5050/signup",
           contentType: 'application/json; charset=utf-8',
           data: JSON.stringify({
             'first_name': fname,
@@ -384,7 +384,7 @@ function addbook()
 
     app.request({    
         async: true, 
-        url: 'https://desolate-basin-69053.herokuapp.com/user/addbook',
+        url: 'http://127.0.0.1:5050/user/addbook',
         contentType: 'application/json; charset=utf-8',
         headers: {'x-access-token': tokens},
         method: "POST",
@@ -428,7 +428,7 @@ function addbooktitle(title){
 
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/mobile/user/title_check/' + title,
+    url: 'http://127.0.0.1:5050/mobile/user/title_check/' + title,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -474,7 +474,7 @@ function addbookauthor(author_name){
   var tokens = localStorage.getItem('token');
 loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/mobile/user/author_check/' + author_name,
+    url: 'http://127.0.0.1:5050/mobile/user/author_check/' + author_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },    
@@ -510,7 +510,7 @@ function addbookisbn(isbn) {
    var tokens = localStorage.getItem('token');
 
    app.request({
-      url: 'https://desolate-basin-69053.herokuapp.com/mobile/user/isbn_check/' + isbn,
+      url: 'hhttp://127.0.0.1:5050/mobile/user/isbn_check/' + isbn,
       contentType: 'application/json; charset=utf-8',
       method: "GET",
       dataType: "json",
@@ -548,7 +548,7 @@ function toprated() {
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/toprated',
+    url: 'http://127.0.0.1:5050/bookshelf/books/toprated',
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },

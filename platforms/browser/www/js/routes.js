@@ -6,6 +6,14 @@ var routes = [
   {
     path: '/signup/',
     url: './pages/signup.html',
+    on:{
+        pageInit: function (e, page) {
+          login_screen.close();
+        },
+        pageBeforeRemove: function (e, page){
+          login_screen.open();
+        },
+    }
   },
   {
     path: '/userprof/',
@@ -39,7 +47,6 @@ var routes = [
             $("#gender").html('');
             $("#gender").append(data.user.gender)
           },
-          
           error: function(data){
               alert("user is not found");
           }
@@ -56,12 +63,76 @@ var routes = [
     url: './pages/educational.html',
   },
   {
+    path: '/english/',
+    url: './pages/english.html',
+  },
+  {
+    path: '/math/',
+    url: './pages/math.html',
+  },
+  {
+    path: '/science/',
+    url: './pages/science.html',
+  },
+  {
+    path: '/history/',
+    url: './pages/history.html',
+  },
+  {
     path: '/fictional/',
     url: './pages/fictional.html',
   },
   {
+    path: '/Adventure/',
+    url: './pages/Adventure.html',
+  },
+  {
+    path: '/Action/',
+    url: './pages/Action.html',
+  },
+  {
+    path: '/Drama/',
+    url: './pages/Drama.html',
+  },
+  {
+    path: '/Horror/',
+    url: './pages/Horror.html',
+  },
+  {
+    path: '/Mystery/',
+    url: './pages/Mystery.html',
+  },
+  {
+    path: '/Mythology/',
+    url: './pages/Mythology.html',
+  },
+  {
     path: '/non-fictional/',
     url: './pages/non-fictional.html',
+  },
+  {
+    path: '/biology/',
+    url: '../pages/biology.html',
+  },
+  {
+    path: '/essay/',
+    url: './pages/essay.html',
+  },
+  {
+    path: '/journalism/',
+    url: './pages/journalism.html',
+  },
+  {
+    path: '/personalNarrative/',
+    url: './pages/personalNarrative.html',
+  },
+  {
+    path: '/referenceBook/',
+    url: './pages/referenceBook.html',
+  },
+  {
+    path: '/speech/',
+    url: './pages/speech.html',
   },
   {
     path: '/login/',
@@ -124,3 +195,52 @@ var routes = [
     url: './pages/404.html',
   },
 ];
+
+function allbooks() {
+  var tokens = localStorage.getItem('token');
+  loops = [];
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books',
+    method: "GET",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    success: function (data) {
+      console.log(data);
+      var employee_data = "";
+      for (var i = 0; i < data.book.length; i++) {
+
+        employee_data += '<div class="col-25">';
+        employee_data += '<a href="/item/" onclick="onebook(); bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\')">' + '<img src="' + data.book[i].book_cover + '" width="100" height="100">' + '</a>';
+        employee_data += '<div class="container">' + data.book[i].title + '</div>';
+        employee_data += '</div>';
+      }
+      $('#allbook').append(employee_data);
+    }
+  });
+}
+
+function recentadded() {
+  var tokens = localStorage.getItem('token');
+  loops = [];
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/latest',
+    method: "GET",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    success: function (data) {
+      console.log(data);
+      var employee_data = "";
+      for (var i = 0; i < data.book.length; i++) {
+        employee_data += '<div class="swiper-slide">';
+        employee_data += '<a href="/item/" onclick="onebook(); bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\')">';
+        employee_data += '<img src="' + data.book[i].book_cover + '" style="width: 100%;height: 100%;">' + '</a>';
+        employee_data += '</div>';
+      }
+      $('#new').append(employee_data);
+    }
+  });
+}

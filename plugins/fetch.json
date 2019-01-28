@@ -22,21 +22,5 @@
         },
         "is_top_level": true,
         "variables": {}
-    },
-    "cordova-plugin-battery-status": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-battery-status@~1.1.0"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-autostart": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-autostart@^2.0.1"
-        },
-        "is_top_level": true,
-        "variables": {}
     }
 }

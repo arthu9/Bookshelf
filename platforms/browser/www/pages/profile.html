@@ -9,11 +9,11 @@
       </div>
       <div class="title">Profile</div>
       <div class="right">
-        <a href="#" class="link">
-         <i class="icon material-icons md-only">message</i>
+        <a href="/inbox/" class="link">
+         <i class="f7-icons">chats_fill</i>
        </a>
-       <a href="#" class="link">
-         <i class="icon material-icons md-only">notifications<span class="badge color-red">50</span></i>
+       <a href="/notifications/" class="link">
+         <i class="icon material-icons md-only">notifications<span class="badge color-red" id="unread" onclick="markread();notif();"></span></i>
        </a>
      </div>
    </div>
@@ -42,15 +42,18 @@
           <img src="images/sample profile.jpg" class="round">
           <div class="round-title" id="name">
           </div> 
+          <div class="rount-title" id="myUserRating">
+                            
+          </div>
         </div>
         <div class="card-footer" style="border: 5px; border-color: gray;">
-          <a href="#" class="link">Followers: 51133</a>
-          <a href="#" class="link">Following: 1500000</a>
+          <a href="#" id="follower" class="link"></a>
+          <a href="#" id="following" class="link"></a>
         </div>
         <hr>
         <div class="card">
-          <div class="card-header" style="font-weight: bolder;">Basic info
-            <a href="#" class="icon material-icons md-only">edit</a>
+          <div class="card-header" style="font-weight: bolder;">
+            Basic info
           </div>
           <div class="card-content card-content-padding">
             <div class="list">
@@ -59,7 +62,7 @@
                   <div class="item-content">
                     <div class="item-media"><i class="icon material-icons md-only">location_on</i></div>
                     <div class="item-inner">
-                      <div class="item-title">Lives in <b>Iligan City</b></div>
+                      <div class="item-title">Lives in <b id="address"></b></div>
                     </div>
                   </div>
                 </li>
@@ -96,37 +99,11 @@
     <div id="tab-2" class="page-content tab">
       <div class="block" style="margin-top: 2%; margin-bottom: 2%;">
             <div class="title" style="text-align: center;">
-               <h2>Activity Logs</h2>
+               <h2>Comments</h2>
                <hr>
             </div>
         <div class="row">
-          <div class="col-100">
-            
-            <div class="row no-gap">
-              <img src="images/sample profile.jpg" class="comment-image">
-              <div class="col-75">
-                <div class="title">
-                  <a href="#"><b>Vitaliy Vladasovich Grachov</b></a>
-                </div>
-                <div class="comment-box" style="padding: 2%;">
-                  This is a test comment po. This is a test comment po. This is a test comment po. This is a test comment po. This is a test comment po. 
-                  This is a test comment po. This is a test comment po.
-                </div>
-              </div>
-            </div>
-            <hr>
-            <div class="row no-gap">
-              <img src="images/fred.jpg" class="comment-image">
-              <div class="col-75">
-                <div class="title">
-                  <a href="#"><b>Vitaliy Vladasovich Grachov</b></a>
-                </div>
-                <div class="comment-box" style="padding: 2%;">
-                  This is a test comment po. This is a test comment po. This is a test comment po. This is a test comment po. This is a test comment po. 
-                  This is a test comment po. This is a test comment po.
-                </div>
-              </div>
-            </div>
+          <div class="col-100" id="myprofilecomments">
           </div>   
         </div>
       </div>
@@ -135,19 +112,11 @@
       <div class="block">
          <div class="title" style="text-align: center;"><h2>Activity Logs</h2>
          <hr></div>
-        <div class="timeline">
+         <div>
+        <div class="timeline" id="logs">
           <!-- Timeline item with special timeline elements and inner -->
-          <div class="timeline-item">
-            <div class="timeline-item-date">25 <small>DEC</small></div>
-            <div class="timeline-item-divider"></div>
-            <div class="timeline-item-content">
-              <div class="timeline-item-inner">
-                <div class="timeline-item-time">12:30</div>
-                <div class="timeline-item-text">Barry borrowed a book from wally.</div>
-              </div>
-            </div>
-          </div>
-          <div class="timeline-item">
+
+          <!-- <div class="timeline-item">
             <div class="timeline-item-date">24 <small>DEC</small></div>
             <div class="timeline-item-divider"></div>
             <div class="timeline-item-content">
@@ -156,59 +125,10 @@
                 <div class="timeline-item-text">Barry borrowed a book from wally.</div>
               </div>
             </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-date">24 <small>DEC</small></div>
-            <div class="timeline-item-divider"></div>
-            <div class="timeline-item-content">
-              <div class="timeline-item-inner">
-                <div class="timeline-item-time">12:30</div>
-                <div class="timeline-item-text">Barry borrowed a book from wally.</div>
-              </div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-date">24 <small>DEC</small></div>
-            <div class="timeline-item-divider"></div>
-            <div class="timeline-item-content">
-              <div class="timeline-item-inner">
-                <div class="timeline-item-time">12:30</div>
-                <div class="timeline-item-text">Barry borrowed a book from wally.</div>
-              </div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-date">24 <small>DEC</small></div>
-            <div class="timeline-item-divider"></div>
-            <div class="timeline-item-content">
-              <div class="timeline-item-inner">
-                <div class="timeline-item-time">12:30</div>
-                <div class="timeline-item-text">Barry borrowed a book from wally.</div>
-              </div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-date">24 <small>DEC</small></div>
-            <div class="timeline-item-divider"></div>
-            <div class="timeline-item-content">
-              <div class="timeline-item-inner">
-                <div class="timeline-item-time">12:30</div>
-                <div class="timeline-item-text">Barry borrowed a book from wally.</div>
-              </div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-date">24 <small>DEC</small></div>
-            <div class="timeline-item-divider"></div>
-            <div class="timeline-item-content">
-              <div class="timeline-item-inner">
-                <div class="timeline-item-time">12:30</div>
-                <div class="timeline-item-text">Barry borrowed a book from wally.</div>
-              </div>
-            </div>
-          </div>
+          </div>  -->
           <!-- End for one timeline-->
         </div>
+          </div>
       </div>
     </div>
   </div>

@@ -7,13 +7,10 @@
           <span class="ios-only">Back</span>
         </a>
       </div>
-      <div class="title">Bookshelf</div>
+      <div class="title">Book Info</div>
       <div class="right">
         <!-- Link to enable searchbar -->
-        <a class="link icon-only searchbar-enable" data-searchbar=".searchbar">
-          <i class="icon f7-icons ios-only">search_strong</i>
-          <i class="icon material-icons md-only">search</i>
-        </a>
+
       </div>
       <!-- Searchbar is a direct child of "navbar-inner" -->
       <form class="searchbar searchbar-expandable">
@@ -42,32 +39,44 @@
         Author: The writer
         <p class="likes">Rating: 5</p> -->
       </div>
-      <div class="card-footer"><a href="/dashboard-comment/" class="link">Rates and Comments</a></div>
+      <div class="card-footer">
+        <a href="/dashboard-comment/" class="link">Comments</a>
+        <div class="moveRight">
+          <a href="#" class="link popover-open" data-popover=".popover-rate">Rate</a>
+        </div>
+      </div>
     </div>
     <div class="card">
       <div class="card-header">Book Owners</div>
   <div class="card-content">
+    <div class="list">
+      <ul>
+        <li class="swipeout">
+          <div class="item-content swipeout-content">
+            <div class="item-media">
+              <i class="f7-icons"></i>
+              <i class="f7-icons">person_fill</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title" id="owner"></div>
+            </div>
+            <div class="item-media">
+              <i class="f7-icons">chevron_right</i>
+            </div>
+          </div>
+          <div class="swipeout-actions-left" id="method">
+            <!-- <a onclick="viewprofile(); visitviewbooks();" href="/viewprofile/" class="color-blue alert-reply">Profile</a>
+            <a class="color-blue alert-forward" id="method"></a>
+            <a onclick="follow();" class="color-blue alert-forward" style="margin-right: 0.5em;">
+              <i class="f7-icons">add</i>
+              Follow
+            </a> -->
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="list links-list" id="owner">
-      <!-- <ul>
-        <li>
-          <a href="#">Name:jeze omfe</a>
-        </li>
-        <li>
-          <a href="#">Name:t'challa herl</a>
-        </li>
-        <li>
-          <a href="#">Name:first last -->
-          <!-- <br>Availability: Yes
-          <br>Quantity: 18 -->
-          <!-- </a>
-        </li>
-        <li>
-          <a href="#">Name:haru haru</a>
-        </li>
-        <li>
-          <a href="#">Name:lee menow</a>
-          <s><s></s></s></li>
-      </ul> -->
+
     </div>
   </div>
 </div>

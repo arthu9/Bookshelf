@@ -1,15 +1,4 @@
 <div class="page" data-name="signup">
-  <!-- <div class="navbar">
-    <div class="navbar-inner sliding">
-      <div class="left">
-        <a href="#" class="link back">
-          <i class="icon icon-back"></i>
-          <span class="ios-only">Back</span>
-        </a>
-      </div>
-      <div class="title">Sign Up</div>
-    </div>
-  </div> -->
   <div class="page-content">
     <div class="list no-hairlines-md">
       <div class="login-screen-title">
@@ -42,7 +31,7 @@
       <br>
       <div class="block">
         <div class="row">
-          <a type="button" style="width: 50% ;margin-right: auto !important; margin-left: auto !important; background: red !important;" class="col button button-round button-fill link back">Cancel</a>
+          <a href="#" onclick="checkLogin()" type="button" style="width: 50% ;margin-right: auto !important; margin-left: auto !important; background: red !important;" class="col button button-round button-fill link back">Cancel</a>
           <button type="button" style="width: 50% ;margin-right: auto !important; margin-left: auto !important;" class="col button button-round button-fill" onclick="signUp1();">Next</button>
           </div>
       </div>
@@ -90,24 +79,6 @@
               <div class="item-title item-label" >Birth date</div>
               <div class="item-input-wrap">
                 <input id="birthdate" name="birthdate" type="date" placeholder="Birth day" value="2014-04-30"/>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label" >Profile Pic</div>
-              <div class="item-input-wrap">
-                <center>
-                  <div onchange="uploadCheck();">
-                   <label id="uploadLabel" class="upload" style="background: red;"> 
-                    <i class="f7-icons">camera_fill</i>
-                    Upload Image
-                    <input type="file" id="uploadBox" size="60" accept="image/*">
-                   </label> 
-                  </div>
-                </center>
               </div>
             </div>
           </div>
@@ -166,4 +137,5 @@
       </div>
     </div>
   </div>
+  <div class="preloader"></div>
 </div>

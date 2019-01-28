@@ -1,27 +1,21 @@
 {
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {}
-  },
-  "installed_plugins": {
-    "cordova-plugin-autostart": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
     },
-    "cordova-plugin-battery-status": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
+    "config_munge": {
+        "files": {}
     },
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.phonegap.Bookshelf"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.phonegap.Bookshelf"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.phonegap.Bookshelf"
+        }
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
-    }
-  },
-  "dependent_plugins": {}
+    "dependent_plugins": {}
 }

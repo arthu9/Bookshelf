@@ -1,0 +1,154 @@
+<div class="page" data-name="viewprofile">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Back</span>
+                </a>
+            </div>
+            <div class="title">Profile</div>
+            <div class="right">
+                <a href="/inbox/" class="link">
+         <i class="f7-icons">chats_fill</i>
+       </a>
+       <a href="/notifications/" class="link">
+         <i class="icon material-icons md-only">notifications<span class="badge color-red" id="unread" onclick="markread();notif();"></span></i>
+       </a>
+            </div>
+        </div>
+    </div>
+    <div class="toolbar tabbar no shadow toolbar-bottom-md">
+        <div class="toolbar-inner">
+            <a href="#tab-1" class="tab-link tab-link-active">
+                <i class="icon material-icons md-only">person</i>
+                <span class="tabbar-label">Bio</span>
+            </a>
+            <a href="#tab-2" class="tab-link">
+                <i class="icon material-icons md-only">insert_comment</i>
+                <span class="tabbar-label">Review</span>
+            </a>
+            <a href="#tab-3" class="tab-link">
+                <i class="icon material-icons md-only">event_note</i>
+                <span class="tabbar-label">Books</span>
+            </a>
+        </div>
+    </div>
+    <div class="tabs-swipeable-wrap">
+        <div class="tabs">
+            <div id="tab-1" class="page-content tab tab-active">
+                <div class="block" style="margin: 0 !important; padding:  0 !important;">
+                    <div class="image-holder">
+                        <img src="images/sample profile.jpg" class="round">
+                        <div class="round-title" id="name">
+                        </div>
+                        <div class="rount-title" id="userRating">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer" style="border: 5px; border-color: gray;">
+                        <a href="#" id="follower1" class="link"></a>
+                        <a href="#" id="following1" class="link"></a>
+                    </div>
+                    <hr>
+                    <div class="card">
+                        <div class="card-header" style="font-weight: bolder;">Basic info
+                            <div class="moveRight">
+                                <a href="" class="link popover-open" data-popover=".popover-rateUser">Rate</a>
+                            </div>
+                        </div>
+                        <div class="card-content card-content-padding">
+                            <div class="list">
+                                <ul>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-media">
+                                                <i class="icon material-icons md-only">location_on</i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title">Lives in
+                                                    <b id="address"></b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-media">
+                                                <i class="icon material-icons md-only">phone</i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title">Contact me
+                                                    <b id="contact"></b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-media">
+                                                <i class="icon material-icons md-only">wc</i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title">Gender
+                                                    <b id='gender'></b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-media">
+                                                <i class="icon material-icons md-only">cake</i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title">Birthday
+                                                    <b id='bday'></b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-2" class="page-content tab">
+                <div class="block" style="margin-top: 2%; margin-bottom: 2%;">
+                    <div class="title" style="text-align: center;">
+                        <h2>Review</h2>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-100" id="comments">
+                        </div>
+                    </div>
+            <div class="toolbar messagebar toolbar-fixed">
+            <div class="toolbar-inner">
+              <div class="messagebar-area">
+                <textarea  id="myComment" class="searchEdit" placeholder="Comment.." style="margin-left: 3%;"></textarea>
+              </div>
+              <a class="link" onclick="commentuser()">Send</a>
+            </div>
+            <div class="messagebar-sheet"></div>
+      </div>
+                </div>
+            </div>
+            <div id="tab-3" class="page-content tab">
+                <div class="block">
+                    <div class="title" style="text-align: center;">
+                        <h2>Books</h2>
+                        <hr>
+                    </div>
+                    <div class="block">
+                        <div class="row" id="allbook">
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

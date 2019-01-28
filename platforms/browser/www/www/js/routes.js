@@ -3,7 +3,7 @@ var routes = [
     path: '/',
     url: 'index.html',
   },
-  {
+{
     path: '/signup/',
     url: './pages/signup.html',
     on:{

@@ -1,66 +1,36 @@
 {
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {}
-  },
-  "installed_plugins": {
-    "cordova-plugin-autostart": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
     },
-    "cordova-plugin-battery-status": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
+    "config_munge": {
+        "files": {}
     },
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.phonegap.Bookshelf"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.phonegap.Bookshelf"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.phonegap.Bookshelf"
+        }
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "id": "cordova-plugin-statusbar.statusbar",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-whitelist": "1.2.2",
+        "cordova-plugin-console": "1.0.7",
+        "cordova-plugin-statusbar": "1.0.1"
     }
-  },
-  "dependent_plugins": {},
-  "modules": [
-    {
-      "file": "plugins/cordova-plugin-autostart/www/auto-start.js",
-      "id": "cordova-plugin-autostart.AutoStart",
-      "pluginId": "cordova-plugin-autostart",
-      "clobbers": [
-        "cordova.plugins.autoStart"
-      ]
-    },
-    {
-      "file": "plugins/cordova-plugin-battery-status/www/battery.js",
-      "id": "cordova-plugin-battery-status.battery",
-      "pluginId": "cordova-plugin-battery-status",
-      "clobbers": [
-        "navigator.battery"
-      ]
-    },
-    {
-      "file": "plugins/cordova-plugin-battery-status/src/browser/BatteryProxy.js",
-      "id": "cordova-plugin-battery-status.Battery",
-      "pluginId": "cordova-plugin-battery-status",
-      "runs": true
-    },
-    {
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "id": "cordova-plugin-statusbar.statusbar",
-      "pluginId": "cordova-plugin-statusbar",
-      "clobbers": [
-        "window.StatusBar"
-      ]
-    }
-  ],
-  "plugin_metadata": {
-    "cordova-plugin-autostart": "2.3.0",
-    "cordova-plugin-battery-status": "1.1.2",
-    "cordova-plugin-console": "1.0.7",
-    "cordova-plugin-statusbar": "1.0.1",
-    "cordova-plugin-whitelist": "1.2.2"
-  }
 }

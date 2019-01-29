@@ -4,10 +4,20 @@
   "displayName": "Bookshelf",
   "cordova": {
     "platforms": [
-      "android"
-    ]
+      "android",
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-console": {},
+      "cordova-plugin-statusbar": {}
+    }
   },
   "dependencies": {
-    "cordova-android": "~7.0.0"
+    "cordova-android": "~7.0.0",
+    "cordova-browser": "^5.0.4",
+    "cordova-plugin-console": "~1.0.1",
+    "cordova-plugin-statusbar": "~1.0.1",
+    "cordova-plugin-whitelist": "~1.2.0"
   }
 }

@@ -4,6 +4,10 @@ var routes = [
     url: 'index.html',
   },
   {
+    path: '/edit_profile/',
+    url: './pages/edit_profile.html',
+  },
+  {
     path: '/notifications/',
     url: './pages/notifications.html',
     on:{
@@ -267,7 +271,7 @@ var routes = [
   {
     path: '/fictional/',
     url: './pages/fictional.html',
-        on:{
+    on:{
       pageInit: function(e, page){
 
       },

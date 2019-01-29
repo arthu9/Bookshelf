@@ -1,0 +1,12 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Bookshelf",
+  "short_name": "Bookshelf",
+  "version": "com.phonegap.Bookshelf",
+  "description": "A Bookshelf mobile app for Bookshelf web.",
+  "author": "Bookshelf Team (AGIK)",
+  "icons": [],
+  "start_url": "index.html",
+  "theme_color": "#2196f3"
+}

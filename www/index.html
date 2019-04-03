@@ -1,316 +1,316 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
-  <meta charset="utf-8">
-  <!--
-  Customize this policy to fit your own app's needs. For more guidance, see:
-      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-  Some notes:
-      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-          * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="default">
-        <meta name="theme-color" content="#2196f3">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <title>Bookhelf</title>
-        <link rel="stylesheet" href="framework7/css/framework7.min.css">
-        <link rel="stylesheet" href="framework7/css/framework7.material.colors.min.css">
-        <link rel="stylesheet" href="framework7/css/framework7-icons.css">
-        <link rel="stylesheet" href="css/item.css">
-        <link rel="stylesheet" href="css/icons.css">
-        <link rel="stylesheet" href="css/app.css">
+    <meta charset="utf-8">
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, see:
+        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+    Some notes:
+        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+          -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#2196f3">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>Bookhelf</title>
+    <link rel="stylesheet" href="framework7/css/framework7.min.css">
+    <link rel="stylesheet" href="framework7/css/framework7.material.colors.min.css">
+    <link rel="stylesheet" href="framework7/css/framework7-icons.css">
+    <link rel="stylesheet" href="css/item.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/app.css">
   </head>
-      <body class="theme-deeppurple">
-        <div id="app">
-          <!-- Status bar overlay for fullscreen mode-->
-          <div class="statusbar"></div>
-          <!-- Left panel with reveal effect when hidden -->
-          <div class="panel panel-left panel-cover">
-            <div class="view view-left">
-              <div class="page">
-                <div class="navbar">
-                  <div class="navbar-inner sliding">
-                    <div class="title">Bookshelf</div>
-                  </div>
-                </div>                
-                <div class="page-content">
-                  <!-- Profile here -->
-                  <a href="/userprof/" data-view=".view-main" class="panel-close" style="text-align: center;">
-                    <div id="myusername">
-                      <h4>View Profile</h4>
-                    </div>                    
-                  </a>
-                  <div class="block-title">Categories</div>
-                  <div class="list links-list">
-                    <ul>
-                      <li>
-                        <a href="/educational/" data-view=".view-main" class="panel-close">Educational</a>
-                      </li>
-                      <li>
-                        <a href="/fictional/" data-view=".view-main" class="panel-close">Fiction</a>
-                      </li>
-                      <li>
-                        <a href="/non-fictional/" data-view=".view-main" class="panel-close">Non-fiction</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Right panel with cover effect -->
-
-
-          <!-- Your main view, should have "view-main" class -->
-          <div class="view view-main ios-edges">
-            <!-- Page, data-name contains page name which can be used in callbacks -->
-            <div class="page" data-name="home">
-              <!-- Top Navbar -->
+    <body class="theme-deeppurple">
+      <div id="app">
+        <!-- Status bar overlay for fullscreen mode-->
+        <div class="statusbar"></div>
+        <!-- Left panel with reveal effect when hidden -->
+        <div class="panel panel-left panel-cover">
+          <div class="view view-left">
+            <div class="page">
               <div class="navbar">
-                <div class="navbar-inner">
-                  <div class="left">
-                    <a href="#" class="link icon-only panel-open" data-panel="left">
-                      <i class="icon f7-icons ios-only">menu</i>
-                      <i class="icon material-icons md-only">menu</i>
-                    </a>
-                  </div>
+                <div class="navbar-inner sliding">
                   <div class="title">Bookshelf</div>
-                    <!-- Link to enable searchbar -->
-                  <div class="right">
-                    <!-- Link to enable searchbar -->
-                  <a href="/inbox/" class="link">
-                  <i class="f7-icons">chats_fill</i>
-                  </a>
-                    <a href="/notifications/" class="link">
-                      <i class="icon material-icons md-only">
-                        notifications<span class="badge color-red" id="unread" onclick="markread();notif();"></span>
-                      </i>
-                    </a>
-                    <a href="/search-page/" class="link icon-only searchbar-enable">
-                      <i class="icon material-icons md-only">search</i>
-                    </a>
-                  </div>
-                  <!-- Searchbar is a direct child of "navbar-inner" -->
                 </div>
-              </div>
-                <div class="toolbar tabbar no shadow toolbar-bottom-md">
-                  <div class="toolbar-inner">
-                    <a href="#tab-1" class="tab-link tab-link-active">
-                      <i class="f7-icons">home</i>
-                    </a>
-                    <a href="#tab-2" class="tab-link">
-                      <i class="f7-icons">book</i>
-                    </a>
-                    <a href="#tab-3" class="tab-link">
-                       <i class="f7-icons">settings</i>
-                    </a>
-                  </div>
-                </div>
-              <!-- Toolbar-->
-              <!-- Scrollable page content-->
-              <div class="page-content" style="padding-top: 1% !important; margin-top: 1% !important;">
-                <div class="tabs-swipeable-wrap" data-touch-move-stop-propagation="false">
-                  <div class="tabs" data-touch-move-stop-propagation="false">
-                    <div id="tab-1" class="page-content tab tab-active" data-touch-move-stop-propagation="false">
-                      <div class="block">
-                        <div class="card-header"  style="font-weight: bold">
-                          <h2>Top Rated</h2><a href="/all-toprated/" style="text-align: right;">Show more</a>
-                        </div>
-                        <hr>
-                        <div class="row" >
-                          <div data-touch-move-stop-propagation="false" class="swiper-container swiper-3">
-                          <div id="rated"  class="swiper-wrapper">
-                          </div>
-                        </div>
-                      </div>
-                      <hr>
-                        <div class="card-header"  style="font-weight: bold">
-                          <h2>Latest Edition</h2><a href="/all-latestedition/" style="text-align: right;">Show more</a>
-                        </div>
-                        <hr>
-                        <div class="row">
-                          <div data-touch-move-stop-propagation="false" class="swiper-container swiper-2">
-                          <div id="borrow" class="swiper-wrapper">
-                          </div>
-                          </div>
-                        </div>
-                        <hr>
-                        <div class="card-header"  style="font-weight: bold">
-                          <h2>Recently added</h2><a href="/all-recentlyadded/" style="text-align: right;">Show more</a>
-                      </div>
-                      <hr>
-                        <div class="row" >
-                          <div data-touch-move-stop-propagation="false" class="swiper-container swiper-1">
-                            <div id="new" class="swiper-wrapper">
-                            </div>
-                          </div>
-                        </div>
-                        <hr>
-                      </div>
-                    </div>
-                  <div id="tab-2" class="page-content tab">
-                  <div class="block" >
-                     <div class="card-header" style="font-weight: bold">Bookshelf</div>
-                                          <hr>
-                     <div class="row" id="allbook" >
-                     </div>
-                     </div>
-                    </div>
-                
-                    <div id="tab-3" class="page-content tab">
-                     <div class="block">
-                     <div class="row">
-                        <button href="/edit_profile/" class="button button-big button-fill color-deeppurple" style="margin-bottom:5%">Edit Profile</button>
-                        <button href="/log-out/" class="button-logout button button-big button-fill color-red">Log out</button>
-                     </div>
-                     </div>
-                    </div>
-                  </div>
-                  <div class="fab fab-right-bottom">
-                     <a href="/form/">
-                        <i class="icon f7-icons">add</i>
-                     </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
- <!-- Popovers -->
-            <div class="popover popover-borrow">
-              <div class="popover-inner">
-                <div class="block">
-                  <div class="list no-hairlines-md">
-                    <ul>
-                      <li>
-                        <div class="item-content item-input">
-                          <div class="item-inner">
-                            <div class="item-title item-label">Return Date</div>
-                            <div class="item-input-wrap">
-                              <input id="returndate" name="returndate" type="date" placeholder="Enter return date"/>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                    <button style="width: 50% ;margin-right: auto !important; margin-left: auto !important;" class="link popover-close col button button-round button-fill" onclick="borrow()">SUBMIT</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="popover popover-rent">
-              <div class="popover-inner">
-                <div class="block">
-                  <div class="list no-hairlines-md">
-                    <ul>
-                      <li>
-                        <div class="item-content item-input">
-                          <div class="item-inner">
-                            <div class="item-title item-label">Return Date</div>
-                            <div class="item-input-wrap">
-                              <input id="returndate1" name="returndate" type="date" placeholder="Enter return date" />
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                    <button style="width: 50% ;margin-right: auto !important; margin-left: auto !important;" class="link popover-close col button button-round button-fill"
-                      onclick="rent()">SUBMIT</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="popover popover-rate">
-              <div class="popover-inner">
-                <div class="block">
-                  <div class="list no-hairlines-md">
-                    <ul>
-                      <li>
-                        <center>
-                          <a href="/item/" class="link popover-close" onclick="iconClick1(); rateThis1();">
-                            <button id="thisRate1" value="1" style="display: none;"></button>
-                            <i id="icon-click1"  class="f7-icons size-40" style="color: black;">star</i>
-                          </a>
-                          <a href="/item/" class="link popover-close" onclick="iconClick2();  rateThis2();">
-                            <button id="thisRate2" value="2" style="display: none;"></button>
-                            <i id="icon-click2" class="f7-icons size-40" style="color: black;">star</i>
-                          </a>
-                          <a href="/item/" class="link popover-close" onclick="iconClick3();  rateThis3();">
-                            <button id="thisRate3" value="3" style="display: none;"></button>
-                            <i id="icon-click3" class="f7-icons size-40" style="color: black;">star</i>
-                          </a>
-                          <a href="/item/" class="link popover-close" onclick="iconClick4();  rateThis4();">
-                            <button id="thisRate4" value="4" style="display: none;"></button>
-                            <i id="icon-click4" class="f7-icons size-40" style="color: black;">star</i>
-                          </a>
-                          <a href="/item/" class="link popover-close" onclick="iconClick5();  rateThis5();">
-                            <button id="thisRate5" value="5" style="display: none;"></button>
-                            <i id="icon-click5" class="f7-icons size-40" style="color: black;">star</i>
-                          </a>
-                        </center>
-                      </li>
-                      <li>
-                        <center>
-                          <span>Rate it!</span>
-                        </center>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="popover popover-rateUser">
-              <div class="popover-inner">
-                <div class="block">
-                  <div class="list no-hairlines-md">
-                    <ul>
-                      <li>
-                        <center>
-                          <a href="/viewprofile/" class="link popover-close" onclick="iconClickUser1(); rateThisUser1();">
-                            <button id="thisRateUser1" value="1" style="display: none;"></button>
-                            <i id="icon-clickUser1" class="f7-icons size-40" style="color: black;">star</i>
-                          </a>
-                          <a href="/viewprofile/" class="link popover-close" onclick="iconClickUser2();  rateThisUser2();">
-                            <button id="thisRateUser2" value="2" style="display: none;"></button>
-                            <i id="icon-clickUser2" class="f7-icons size-40" style="color: black;">star</i>
-                          </a>
-                          <a href="/viewprofile/" class="link popover-close" onclick="iconClickUser3();  rateThisUser3();">
-                            <button id="thisRateUser3" value="3" style="display: none;"></button>
-                            <i id="icon-clickUser3" class="f7-icons size-40" style="color: black;">star</i>
-                          </a>
-                          <a href="/viewprofile/" class="link popover-close" onclick="iconClickUser4();  rateThisUser4();">
-                            <button id="thisRateUser4" value="4" style="display: none;"></button>
-                            <i id="icon-clickUser4" class="f7-icons size-40" style="color: black;">star</i>
-                          </a>
-                          <a href="/viewprofile/" class="link popover-close" onclick="iconClickUser5();  rateThisUser5();">
-                            <button id="thisRateUser5" value="5" style="display: none;"></button>
-                            <i id="icon-clickUser5" class="f7-icons size-40" style="color: black;">star</i>
-                          </a>
-                        </center>
-                      </li>
-                      <li>
-                        <center>
-                          <span>Rate User!</span>
-                        </center>
-                      </li>
-                    </ul>
-                  </div>
+              </div>                
+              <div class="page-content">
+                <!-- Profile here -->
+                <a href="/userprof/" data-view=".view-main" class="panel-close" style="text-align: center;">
+                  <div id="myusername">
+                    <h4>View Profile</h4>
+                  </div>                    
+                </a>
+                <div class="block-title">Categories</div>
+                <div class="list links-list">
+                  <ul>
+                    <li>
+                      <a href="/educational/" data-view=".view-main" class="panel-close">Educational</a>
+                    </li>
+                    <li>
+                      <a href="/fictional/" data-view=".view-main" class="panel-close">Fiction</a>
+                    </li>
+                    <li>
+                      <a href="/non-fictional/" data-view=".view-main" class="panel-close">Non-fiction</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Framework7 library -->
-        <script src="framework7/js/framework7.min.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <!-- App routes -->
-        <script src="js/moment.js"></script>
-        <script src="js/routes.js"></script>
-        <!-- Your custom app scripts -->
-        <script src="js/app.js"></script>
-      </body>
+        <!-- Right panel with cover effect -->
+
+
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main ios-edges">
+          <!-- Page, data-name contains page name which can be used in callbacks -->
+          <div class="page" data-name="home">
+            <!-- Top Navbar -->
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left">
+                  <a href="#" class="link icon-only panel-open" data-panel="left">
+                    <i class="icon f7-icons ios-only">menu</i>
+                    <i class="icon material-icons md-only">menu</i>
+                  </a>
+                </div>
+                <div class="title">Bookshelf</div>
+                  <!-- Link to enable searchbar -->
+                <div class="right">
+                  <!-- Link to enable searchbar -->
+                <a href="/inbox/" class="link">
+                <i class="f7-icons">chats_fill</i>
+                </a>
+                  <a href="/notifications/" class="link">
+                    <i class="icon material-icons md-only">
+                      notifications<span class="badge color-red" id="unread" onclick="markread();notif();"></span>
+                    </i>
+                  </a>
+                  <a href="/search-page/" class="link icon-only searchbar-enable">
+                    <i class="icon material-icons md-only">search</i>
+                  </a>
+                </div>
+                <!-- Searchbar is a direct child of "navbar-inner" -->
+              </div>
+            </div>
+              <div class="toolbar tabbar no shadow toolbar-bottom-md">
+                <div class="toolbar-inner">
+                  <a href="#tab-1" class="tab-link tab-link-active">
+                    <i class="f7-icons">home</i>
+                  </a>
+                  <a href="#tab-2" class="tab-link">
+                    <i class="f7-icons">book</i>
+                  </a>
+                  <a href="#tab-3" class="tab-link">
+                     <i class="f7-icons">settings</i>
+                  </a>
+                </div>
+              </div>
+            <!-- Toolbar-->
+            <!-- Scrollable page content-->
+            <div class="page-content" style="padding-top: 1% !important; margin-top: 1% !important;">
+              <div class="tabs-swipeable-wrap" data-touch-move-stop-propagation="false">
+                <div class="tabs" data-touch-move-stop-propagation="false">
+                  <div id="tab-1" class="page-content tab tab-active" data-touch-move-stop-propagation="false">
+                    <div class="block">
+                      <div class="card-header"  style="font-weight: bold">
+                        <h2>Top Rated</h2><a href="/all-toprated/" style="text-align: right;">Show more</a>
+                      </div>
+                      <hr>
+                      <div class="row" >
+                        <div data-touch-move-stop-propagation="false" class="swiper-container swiper-3">
+                        <div id="rated"  class="swiper-wrapper">
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                      <div class="card-header"  style="font-weight: bold">
+                        <h2>Latest Edition</h2><a href="/all-latestedition/" style="text-align: right;">Show more</a>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div data-touch-move-stop-propagation="false" class="swiper-container swiper-2">
+                        <div id="borrow" class="swiper-wrapper">
+                        </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="card-header"  style="font-weight: bold">
+                        <h2>Recently added</h2><a href="/all-recentlyadded/" style="text-align: right;">Show more</a>
+                    </div>
+                    <hr>
+                      <div class="row" >
+                        <div data-touch-move-stop-propagation="false" class="swiper-container swiper-1">
+                          <div id="new" class="swiper-wrapper">
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
+                  </div>
+                <div id="tab-2" class="page-content tab">
+                <div class="block" >
+                   <div class="card-header" style="font-weight: bold">Bookshelf</div>
+                                        <hr>
+                   <div class="row" id="allbook" >
+                   </div>
+                   </div>
+                  </div>
+              
+                  <div id="tab-3" class="page-content tab">
+                   <div class="block">
+                   <div class="container-fuild">
+                     <a href="/edit_profile/" class="button button-active button-big button-fill color-blue" style="margin-bottom:5%;" target="_self">Edit Profile</a>
+                      <button href="/log-out/" class="button-logout button button-big button-fill color-red" >Log out</button>
+                   </div>
+                   </div>
+                  </div>
+                </div>
+                <div class="fab fab-right-bottom">
+                   <a href="/form/">
+                      <i class="icon f7-icons">add</i>
+                   </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  <!-- Popovers -->
+          <div class="popover popover-borrow">
+            <div class="popover-inner">
+              <div class="block">
+                <div class="list no-hairlines-md">
+                  <ul>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">Return Date</div>
+                          <div class="item-input-wrap">
+                            <input id="returndate" name="returndate" type="date" placeholder="Enter return date"/>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <button style="width: 50% ;margin-right: auto !important; margin-left: auto !important;" class="link popover-close col button button-round button-fill" onclick="borrow()">SUBMIT</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="popover popover-rent">
+            <div class="popover-inner">
+              <div class="block">
+                <div class="list no-hairlines-md">
+                  <ul>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">Return Date</div>
+                          <div class="item-input-wrap">
+                            <input id="returndate1" name="returndate" type="date" placeholder="Enter return date" />
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <button style="width: 50% ;margin-right: auto !important; margin-left: auto !important;" class="link popover-close col button button-round button-fill"
+                    onclick="rent()">SUBMIT</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="popover popover-rate">
+            <div class="popover-inner">
+              <div class="block">
+                <div class="list no-hairlines-md">
+                  <ul>
+                    <li>
+                      <center>
+                        <a href="/item/" class="link popover-close" onclick="iconClick1(); rateThis1();">
+                          <button id="thisRate1" value="1" style="display: none;"></button>
+                          <i id="icon-click1"  class="f7-icons size-40" style="color: black;">star</i>
+                        </a>
+                        <a href="/item/" class="link popover-close" onclick="iconClick2();  rateThis2();">
+                          <button id="thisRate2" value="2" style="display: none;"></button>
+                          <i id="icon-click2" class="f7-icons size-40" style="color: black;">star</i>
+                        </a>
+                        <a href="/item/" class="link popover-close" onclick="iconClick3();  rateThis3();">
+                          <button id="thisRate3" value="3" style="display: none;"></button>
+                          <i id="icon-click3" class="f7-icons size-40" style="color: black;">star</i>
+                        </a>
+                        <a href="/item/" class="link popover-close" onclick="iconClick4();  rateThis4();">
+                          <button id="thisRate4" value="4" style="display: none;"></button>
+                          <i id="icon-click4" class="f7-icons size-40" style="color: black;">star</i>
+                        </a>
+                        <a href="/item/" class="link popover-close" onclick="iconClick5();  rateThis5();">
+                          <button id="thisRate5" value="5" style="display: none;"></button>
+                          <i id="icon-click5" class="f7-icons size-40" style="color: black;">star</i>
+                        </a>
+                      </center>
+                    </li>
+                    <li>
+                      <center>
+                        <span>Rate it!</span>
+                      </center>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="popover popover-rateUser">
+            <div class="popover-inner">
+              <div class="block">
+                <div class="list no-hairlines-md">
+                  <ul>
+                    <li>
+                      <center>
+                        <a href="/viewprofile/" class="link popover-close" onclick="iconClickUser1(); rateThisUser1();">
+                          <button id="thisRateUser1" value="1" style="display: none;"></button>
+                          <i id="icon-clickUser1" class="f7-icons size-40" style="color: black;">star</i>
+                        </a>
+                        <a href="/viewprofile/" class="link popover-close" onclick="iconClickUser2();  rateThisUser2();">
+                          <button id="thisRateUser2" value="2" style="display: none;"></button>
+                          <i id="icon-clickUser2" class="f7-icons size-40" style="color: black;">star</i>
+                        </a>
+                        <a href="/viewprofile/" class="link popover-close" onclick="iconClickUser3();  rateThisUser3();">
+                          <button id="thisRateUser3" value="3" style="display: none;"></button>
+                          <i id="icon-clickUser3" class="f7-icons size-40" style="color: black;">star</i>
+                        </a>
+                        <a href="/viewprofile/" class="link popover-close" onclick="iconClickUser4();  rateThisUser4();">
+                          <button id="thisRateUser4" value="4" style="display: none;"></button>
+                          <i id="icon-clickUser4" class="f7-icons size-40" style="color: black;">star</i>
+                        </a>
+                        <a href="/viewprofile/" class="link popover-close" onclick="iconClickUser5();  rateThisUser5();">
+                          <button id="thisRateUser5" value="5" style="display: none;"></button>
+                          <i id="icon-clickUser5" class="f7-icons size-40" style="color: black;">star</i>
+                        </a>
+                      </center>
+                    </li>
+                    <li>
+                      <center>
+                        <span>Rate User!</span>
+                      </center>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Framework7 library -->
+      <script src="framework7/js/framework7.min.js"></script>
+      <script src="js/jquery.min.js"></script>
+      <!-- App routes -->
+      <script src="js/moment.js"></script>
+      <script src="js/routes.js"></script>
+      <!-- Your custom app scripts -->
+      <script src="js/app.js"></script>
+    </body>
 </html>

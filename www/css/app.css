@@ -154,3 +154,15 @@ textarea.searchEdit {
 form .searchbar3{
   color: white !important;
 }
+
+.imongmama1 {
+  z-index: 6000;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.imongmama2{
+  z-index: 6000;
+  position: absolute;
+}

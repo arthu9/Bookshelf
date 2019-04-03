@@ -4,10 +4,6 @@ var routes = [
     url: 'index.html',
   },
   {
-    path: '/edit_profile/',
-    url: './pages/edit_profile.html',
-  },
-  {
     path: '/notifications/',
     url: './pages/notifications.html',
     on:{
@@ -88,6 +84,16 @@ var routes = [
         topborrow();
          allbooks();
       },
+    }
+  },
+  {
+    path: '/edit_profile/',
+    url: './pages/edit_profile.html',
+    on:{
+        pageInit: function(e, page){
+          app.dialog.preloader();
+          view_edit_profile();
+        }
     }
   },
   {

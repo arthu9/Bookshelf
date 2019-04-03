@@ -284,17 +284,6 @@ $$('.dynamic-popover').on('click', function () {
   dynamicPopover.open();
 });
 
-// function iconClick() {
-//   // var $$ = $.noConflict();
-//   $$('.rating').on('click', function() {
-//       $$("#rated5").html() === '<i id="" class="f7-icons">star_fill</i>' ? $$("#rated5").html('<i id="" class="f7-icons">star</i>') : $$("#rated5").html('<i id="" class="f7-icons color-yellow">star_fill</i>')
-      
-//       $$("#rated3").html() = '<i id="" class="f7-icons">star_fill</i>';
-//       $$("#rated2").html() = '<i id="" class="f7-icons">star_fill</i>';
-//       $$("#rated1").html() = '<i id="" class="f7-icons">star_fill</i>';
-//   })
-// }
-
 function iconClick1() {
   document.getElementById("icon-click1").style.color = "yellow";
   setInterval(function(){
@@ -441,45 +430,45 @@ function signUp4() {
 }
 
 function signup0(){
-        app.dialog.preloader();
-        var fname = $("#first_name").val();
-        var lname = $("#last_name").val();
-        var contact_number = $("#contact_number").val();
-        var birthdate = $("#birthdate").val();
-        var gender = $("#gender").val();
-        var username = $("#username").val();
-        var password = $("#password").val();
-        var address = $("#address").val();
-        $.ajax({
-          url: "https://desolate-basin-69053.herokuapp.com/signup",
-          contentType: 'application/json; charset=utf-8',
-          data: JSON.stringify({
-            'first_name': fname,
-            'last_name': lname,
-            'contact_number': contact_number,
-            'birth_date': birthdate,
-            'gender': gender,
-            'username': username,
-            'password': password,
-            'address': address
-          }),
-          method: "POST",
-          dataType: "json",
-          crossDomain: true,
-          success: function(resp) {
-            app.dialog.close()
-            console.log("Registered success");
-            alert("Registered successfully!");
-            mainView.router.navigate('/');
-            checkLogin();
-          },
-          error: function (e) {
-            app.dialog.close()
-            app.dialog.alert('Sign up failed!', 'Error')
-            console.log('error');
-          }
-        });
-         }
+  app.dialog.preloader();
+  var fname = $("#first_name").val();
+  var lname = $("#last_name").val();
+  var contact_number = $("#contact_number").val();
+  var birthdate = $("#birthdate").val();
+  var gender = $("#gender").val();
+  var username = $("#username").val();
+  var password = $("#password").val();
+  var address = $("#address").val();
+  $.ajax({
+    url: "https://desolate-basin-69053.herokuapp.com/signup",
+    contentType: 'application/json; charset=utf-8',
+    data: JSON.stringify({
+      'first_name': fname,
+      'last_name': lname,
+      'contact_number': contact_number,
+      'birth_date': birthdate,
+      'gender': gender,
+      'username': username,
+      'password': password,
+      'address': address
+    }),
+    method: "POST",
+    dataType: "json",
+    crossDomain: true,
+    success: function(resp) {
+      app.dialog.close()
+      console.log("Registered success");
+      alert("Registered successfully!");
+      mainView.router.navigate('/');
+      checkLogin();
+    },
+    error: function (e) {
+      app.dialog.close()
+      app.dialog.alert('Sign up failed!', 'Error')
+      console.log('error');
+    }
+  });
+}
 
 $(document).on('page:init', function (e) {  
   // Code for About page
@@ -497,20 +486,12 @@ $('.button-logout').on('click', function (e) {
         //location.reload();
     });    
 });
-function sik() {
-  // selected = [];
-  // selected1 = [];
 
+function sik() {
   $("input:checkbox[name=select]:checked").each(function () {
     localStorage.setItem("siked1", $(this).val());
   });
-
-  }
-  // localStorage.setItem("siked1", JSON.stringify(selected));
-//   localStorage.setItem("siked", JSON.stringify(selected1));
-// }
-
-
+}
 
 function addbook()
   {
@@ -653,7 +634,7 @@ function search1(){
 
 function addbookauthor(author_name){
   var tokens = localStorage.getItem('token');
-loops = [];
+  loops = [];
   app.request({
     url: 'https://desolate-basin-69053.herokuapp.com/mobile/user/author_check/' + author_name,
     method: "GET",
@@ -688,7 +669,6 @@ function get_one(i) {
 
 function addbookisbn(isbn) {
    var tokens = localStorage.getItem('token');
-
    app.request({
       url: 'https://desolate-basin-69053.herokuapp.com/mobile/user/isbn_check/' + isbn,
       contentType: 'application/json; charset=utf-8',
@@ -869,9 +849,9 @@ function price(i) {
 }
 
 function checkfollow() {
-    var tokens = localStorage.getItem('token')
-    var owner = localStorage.getItem('bookowners');
-    var user = localStorage.getItem('username');
+  var tokens = localStorage.getItem('token')
+  var owner = localStorage.getItem('bookowners');
+  var user = localStorage.getItem('username');
   app.request({
     url: 'https://desolate-basin-69053.herokuapp.com/follow-check',
     method: "POST",
@@ -927,6 +907,7 @@ function borrow() {
     }
   })
 }
+
 function rent() {
   var tokens = localStorage.getItem('token')
   var owner = localStorage.getItem('bookowners');
@@ -960,6 +941,7 @@ function rent() {
     }
   })
 }
+
 function sale() {
   var tokens = localStorage.getItem('token')
   var owner = localStorage.getItem('bookowners');
@@ -1024,7 +1006,6 @@ function english() {
   });
 }
 
-
 function math() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Math"
@@ -1061,6 +1042,7 @@ function math() {
     }
   });
 }
+
 function history() {
   var tokens = localStorage.getItem('token');
   var genre_name = "History"
@@ -1097,6 +1079,7 @@ function history() {
     }
   });
 }
+
 function Adventure() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Adventure"
@@ -1133,6 +1116,7 @@ function Adventure() {
     }
   });
 }
+
 function Action() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Action"
@@ -1169,6 +1153,7 @@ function Action() {
     }
   });
 }
+
 function Drama() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Drama"
@@ -1205,6 +1190,7 @@ function Drama() {
     }
   });
 }
+
 function Horror() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Horror"
@@ -1241,6 +1227,7 @@ function Horror() {
     }
   });
 }
+
 function Mystery() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Mystery"
@@ -1277,6 +1264,7 @@ function Mystery() {
     }
   });
 }
+
 function Mythology() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Mythology"
@@ -1313,6 +1301,7 @@ function Mythology() {
     }
   });
 }
+
 function Biography() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Biography"
@@ -1349,6 +1338,7 @@ function Biography() {
     }
   });
 }
+
 function essay() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Essay"
@@ -1385,6 +1375,7 @@ function essay() {
     }
   });
 }
+
 function journalism() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Journalism"
@@ -1421,6 +1412,7 @@ function journalism() {
     }
   });
 }
+
 function personalnarrative() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Personal Narrative"
@@ -1457,6 +1449,7 @@ function personalnarrative() {
     }
   });
 }
+
 function referencebook() {
   var tokens = localStorage.getItem('token');
   var genre_name = "Reference Book"
@@ -1493,6 +1486,7 @@ function referencebook() {
     }
   });
 }
+
 function speech(){
   var tokens = localStorage.getItem('token');
   var genre_name = "Speech"
@@ -1529,6 +1523,7 @@ function speech(){
     }
   });
 }
+
 function search2(that) {
   var tokens = localStorage.getItem('token');
   // var username = localStorage.getItem('username');
@@ -1686,181 +1681,180 @@ function searchall(){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-  url: 'https://desolate-basin-69053.herokuapp.com/mobile/bookshelf/books',
-  method: "GET",
-  contentType: 'application/json; charset=utf-8',
-  headers: { 'x-access-token': tokens },
-  dataType: "json",
-  crossDomain: true,
-  success: function (data) {
-    console.log(data);
-    if (data.book.length == 0) {
-      app.dialog.alert('Sorry, nothing to display');
-    } else {
-      var employee_data = "";
-      for (var i = 0; i < data.book.length; i++) {
-      employee_data += '<li>';
-      employee_data += '<a  class="item-link item-content" href="/item/" onclick="bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\');">';
-      employee_data += '<div class="item-media">';
-      employee_data += '<img src="' + data.book[i].book_cover + '" width="100px" height="150px">';
-      employee_data += '</div>';
-      employee_data += '<div class="item-inner">';
-      employee_data += '<div class="item-title">' + data.book[i].title + '</div>';
-      employee_data += '</div>';
-      employee_data += '</a></li>';
+    url: 'https://desolate-basin-69053.herokuapp.com/mobile/bookshelf/books',
+    method: "GET",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    success: function (data) {
+      console.log(data);
+      if (data.book.length == 0) {
+        app.dialog.alert('Sorry, nothing to display');
+      } else {
+        var employee_data = "";
+        for (var i = 0; i < data.book.length; i++) {
+        employee_data += '<li>';
+        employee_data += '<a  class="item-link item-content" href="/item/" onclick="bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\');">';
+        employee_data += '<div class="item-media">';
+        employee_data += '<img src="' + data.book[i].book_cover + '" width="100px" height="150px">';
+        employee_data += '</div>';
+        employee_data += '<div class="item-inner">';
+        employee_data += '<div class="item-title">' + data.book[i].title + '</div>';
+        employee_data += '</div>';
+        employee_data += '</a></li>';
+        }
+        $('#allbooks').append(employee_data);
       }
-      $('#allbooks').append(employee_data);
+    },
+    complete: function(){
+      app.dialog.close();
     }
-  },
-  complete: function(){
-    app.dialog.close();
-  }
-});
-}
-
-
-function alltoprated(){
-  var tokens = localStorage.getItem('token');
-  loops = [];
-  app.request({
-  url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/alltoprated',
-  method: "GET",
-  contentType: 'application/json; charset=utf-8',
-  headers: { 'x-access-token': tokens },
-  dataType: "json",
-  crossDomain: true,
-  success: function (data) {
-    console.log(data);
-    if (data.book.length == 0) {
-      app.dialog.alert('Sorry, nothing to display');
-    } else {
-      var employee_data = "";
-      for (var i = 0; i < data.book.length; i++) {
-      employee_data += '<li>';
-      employee_data += '<a  class="item-link item-content" href="/item/" onclick="bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\');">';
-      employee_data += '<div class="item-media">';
-      employee_data += '<img src="' + data.book[i].book_cover + '" width="100px" height="150px">';
-      employee_data += '</div>';
-      employee_data += '<div class="item-inner">';
-      employee_data += '<div class="item-title">' + data.book[i].title + '</div>';
-      employee_data += '</div>';
-      employee_data += '</a></li>';
-      }
-      $('#alltoprated').append(employee_data);
-    }
-  },
-  complete: function(){
-    app.dialog.close();
-  }
-});
+  });
 }
 
 function alltoprated(){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-  url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/alltoprated',
-  method: "GET",
-  contentType: 'application/json; charset=utf-8',
-  headers: { 'x-access-token': tokens },
-  dataType: "json",
-  crossDomain: true,
-  success: function (data) {
-    console.log(data);
-    if (data.book.length == 0) {
-      app.dialog.alert('Sorry, nothing to display');
-    } else {
-      var employee_data = "";
-      for (var i = 0; i < data.book.length; i++) {
-      employee_data += '<li>';
-      employee_data += '<a  class="item-link item-content" href="/item/" onclick="bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\');">';
-      employee_data += '<div class="item-media">';
-      employee_data += '<img src="' + data.book[i].book_cover + '" width="100px" height="150px">';
-      employee_data += '</div>';
-      employee_data += '<div class="item-inner">';
-      employee_data += '<div class="item-title">' + data.book[i].title + '</div>';
-      employee_data += '</div>';
-      employee_data += '</a></li>';
+    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/alltoprated',
+    method: "GET",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    success: function (data) {
+      console.log(data);
+      if (data.book.length == 0) {
+        app.dialog.alert('Sorry, nothing to display');
+      } else {
+        var employee_data = "";
+        for (var i = 0; i < data.book.length; i++) {
+        employee_data += '<li>';
+        employee_data += '<a  class="item-link item-content" href="/item/" onclick="bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\');">';
+        employee_data += '<div class="item-media">';
+        employee_data += '<img src="' + data.book[i].book_cover + '" width="100px" height="150px">';
+        employee_data += '</div>';
+        employee_data += '<div class="item-inner">';
+        employee_data += '<div class="item-title">' + data.book[i].title + '</div>';
+        employee_data += '</div>';
+        employee_data += '</a></li>';
+        }
+        $('#alltoprated').append(employee_data);
       }
-      $('#alltoprated').append(employee_data);
+    },
+    complete: function(){
+      app.dialog.close();
     }
-  },
-  complete: function(){
-    app.dialog.close();
-  }
-});
+  });
+}
+
+function alltoprated(){
+  var tokens = localStorage.getItem('token');
+  loops = [];
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/alltoprated',
+    method: "GET",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    success: function (data) {
+      console.log(data);
+      if (data.book.length == 0) {
+        app.dialog.alert('Sorry, nothing to display');
+      } else {
+        var employee_data = "";
+        for (var i = 0; i < data.book.length; i++) {
+        employee_data += '<li>';
+        employee_data += '<a  class="item-link item-content" href="/item/" onclick="bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\');">';
+        employee_data += '<div class="item-media">';
+        employee_data += '<img src="' + data.book[i].book_cover + '" width="100px" height="150px">';
+        employee_data += '</div>';
+        employee_data += '<div class="item-inner">';
+        employee_data += '<div class="item-title">' + data.book[i].title + '</div>';
+        employee_data += '</div>';
+        employee_data += '</a></li>';
+        }
+        $('#alltoprated').append(employee_data);
+      }
+    },
+    complete: function(){
+      app.dialog.close();
+    }
+  });
 }
 
 function alllatestedition(){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-  url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/alllatest',
-  method: "GET",
-  contentType: 'application/json; charset=utf-8',
-  headers: { 'x-access-token': tokens },
-  dataType: "json",
-  crossDomain: true,
-  success: function (data) {
-    console.log(data);
-    if (data.book.length == 0) {
-      app.dialog.alert('Sorry, nothing to display');
-    } else {
-      var employee_data = "";
-      for (var i = 0; i < data.book.length; i++) {
-      employee_data += '<li>';
-      employee_data += '<a  class="item-link item-content" href="/item/" onclick="bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\');">';
-      employee_data += '<div class="item-media">';
-      employee_data += '<img src="' + data.book[i].book_cover + '" width="100px" height="150px">';
-      employee_data += '</div>';
-      employee_data += '<div class="item-inner">';
-      employee_data += '<div class="item-title">' + data.book[i].title + '</div>';
-      employee_data += '</div>';
-      employee_data += '</a></li>';
+    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/alllatest',
+    method: "GET",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    success: function (data) {
+      console.log(data);
+      if (data.book.length == 0) {
+        app.dialog.alert('Sorry, nothing to display');
+      } else {
+        var employee_data = "";
+        for (var i = 0; i < data.book.length; i++) {
+        employee_data += '<li>';
+        employee_data += '<a  class="item-link item-content" href="/item/" onclick="bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\');">';
+        employee_data += '<div class="item-media">';
+        employee_data += '<img src="' + data.book[i].book_cover + '" width="100px" height="150px">';
+        employee_data += '</div>';
+        employee_data += '<div class="item-inner">';
+        employee_data += '<div class="item-title">' + data.book[i].title + '</div>';
+        employee_data += '</div>';
+        employee_data += '</a></li>';
+        }
+        $('#alllatestedition').append(employee_data);
       }
-      $('#alllatestedition').append(employee_data);
+    },
+    complete: function(){
+      app.dialog.close();
     }
-  },
-  complete: function(){
-    app.dialog.close();
-  }
-});
+  });
 }
 
 function allrecentlyadded(){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-  url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/allrecent',
-  method: "GET",
-  contentType: 'application/json; charset=utf-8',
-  headers: { 'x-access-token': tokens },
-  dataType: "json",
-  crossDomain: true,
-  success: function (data) {
-    console.log(data);
-    if (data.book.length == 0) {
-      app.dialog.alert('Sorry, nothing to display');
-    } else {
-      var employee_data = "";
-      for (var i = 0; i < data.book.length; i++) {
-      employee_data += '<li>';
-      employee_data += '<a  class="item-link item-content" href="/item/" onclick="bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\');">';
-      employee_data += '<div class="item-media">';
-      employee_data += '<img src="' + data.book[i].book_cover + '" width="100px" height="150px">';
-      employee_data += '</div>';
-      employee_data += '<div class="item-inner">';
-      employee_data += '<div class="item-title">' + data.book[i].title + '</div>';
-      employee_data += '</div>';
-      employee_data += '</a></li>';
+    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/allrecent',
+    method: "GET",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    success: function (data) {
+      console.log(data);
+      if (data.book.length == 0) {
+        app.dialog.alert('Sorry, nothing to display');
+      } else {
+        var employee_data = "";
+        for (var i = 0; i < data.book.length; i++) {
+        employee_data += '<li>';
+        employee_data += '<a  class="item-link item-content" href="/item/" onclick="bookindex(\'' + data.book[i].book_id + '\'); bookowner(\'' + data.book[i].owner_username + '\');">';
+        employee_data += '<div class="item-media">';
+        employee_data += '<img src="' + data.book[i].book_cover + '" width="100px" height="150px">';
+        employee_data += '</div>';
+        employee_data += '<div class="item-inner">';
+        employee_data += '<div class="item-title">' + data.book[i].title + '</div>';
+        employee_data += '</div>';
+        employee_data += '</a></li>';
+        }
+        $('#allrecentlyadded').append(employee_data);
       }
-      $('#allrecentlyadded').append(employee_data);
+    },
+    complete: function(){
+      app.dialog.close();
     }
-  },
-  complete: function(){
-    app.dialog.close();
-  }
-});
+  });
 }
 
 function sliders(){
@@ -2512,23 +2506,22 @@ function commentuser() {
 }
 
 
-  function displayCommentuser() {
+function displayCommentuser() {
   var username = localStorage.getItem('username');
-    var tokens = localStorage.getItem('token')
-    var owner = localStorage.getItem('bookowners');
-  
-    app.request({
-      url: 'https://desolate-basin-69053.herokuapp.com/user/comments',
-      method: "POST",
-      contentType: 'application/json; charset=utf-8',
-      headers: { 'x-access-token': tokens },
-      dataType: "json",
-      crossDomain: true,
-      data: JSON.stringify({
-        'username': owner,
-  
-      }),
-success: function (data) {
+  var tokens = localStorage.getItem('token')
+  var owner = localStorage.getItem('bookowners');
+
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/user/comments',
+    method: "POST",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    data: JSON.stringify({
+      'username': owner,
+    }),
+    success: function (data) {
       console.log("comments")
       console.log(data)
       var logs = "";
@@ -2547,16 +2540,16 @@ success: function (data) {
         logs += '</div></div></div>';
         logs += '<hr>';
       }
-        $("#comments").append(logs);
-      },
-      error: function (data) {
-        console.log(data);
-      },
-      complete: function(data){
-        app.dialog.close();
-      }
-    });
-  }
+      $("#comments").append(logs);
+    },
+    error: function (data) {
+      console.log(data);
+    },
+    complete: function(data){
+      app.dialog.close();
+    }
+  });
+}
 
 function markread() {
   var tokens = localStorage.getItem('token');
@@ -2582,279 +2575,278 @@ function markread() {
 
   })
 }
+
 function getownerid(i) {
    localStorage.setItem('ownerid', i);
 }
 
 function notif(){
-      var username = localStorage.getItem('username');
-    var tokens = localStorage.getItem('token');
+  var username = localStorage.getItem('username');
+  var tokens = localStorage.getItem('token');
   app.request({
-  url: 'https://desolate-basin-69053.herokuapp.com/notifications',
-  type: "POST",
-  contentType: 'application/json; charset=utf-8',
-  dataType: "json",
-  headers: { 'x-access-token': tokens },
-  data: JSON.stringify({
-    "current_user": username
-  }),
-  success: function (data) {
-    console.log(data)
-    console.log("hshhhhs")
-    var notifs = "";
-    for (var i = 0; i < data.notifications.length; i++) {
-      if (data.notifications[i].type == "borrower_returned_request" || data.notifications[i].type == "owner_borrow_return_verification") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Verify</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'Verify that ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' + ' has returned your ';
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >' + 'book.' + ' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
+    url: 'https://desolate-basin-69053.herokuapp.com/notifications',
+    type: "POST",
+    contentType: 'application/json; charset=utf-8',
+    dataType: "json",
+    headers: { 'x-access-token': tokens },
+    data: JSON.stringify({
+      "current_user": username
+    }),
+    success: function (data) {
+      console.log(data)
+      console.log("hshhhhs")
+      var notifs = "";
+      for (var i = 0; i < data.notifications.length; i++) {
+        if (data.notifications[i].type == "borrower_returned_request" || data.notifications[i].type == "owner_borrow_return_verification") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Verify</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'Verify that ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' + ' has returned your ';
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >' + 'book.' + ' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
 
+        }
+        else if (data.notifications[i].type == "borrower_borrow_one_day" || data.notifications[i].type == "renter_rent_one_day") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Note!</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'Book must be returned tomorrow. Please confirm if you have returned ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  "'s " ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+
+        }else if (data.notifications[i].type == "owner_borrow_one_day" || data.notifications[i].type == "owner_rent_one_day") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Note!</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'Book must be returned tomorrow. Verify that ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has returned your ';
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+
+        }else if (data.notifications[i].type == "owner_borrow_today") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Note!</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'Book must be returned today. Verify that ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has returned your ' ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+
+        } else if (data.notifications[i].type == "borrower_borrow_today") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Note!</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'Book must be returned today. Please confirm if you have returned ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has returned your ' ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+        } else if (data.notifications[i].type == "owner_returned_successful") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Returned</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has returned your ' ;
+          notifs += '<a onclick="bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+'</a >' + '. Leave a rating.';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "borrower_returned_successful") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Thank you!</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'Thank you for returning the book.';
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >' + '. Leave a rating.';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "borrower_borrow_return_") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">please,Confirm!</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'Please confirm if you have returned ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  "'s " ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "owner_request_accepted") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Accepted request</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'You have accepted the request of ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' for your ';
+          notifs += '<a onclick="bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" hre ="/item/">'+'book.'+'</a>';
+          notifs += 'Click' + '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].borrower + '\');acceptreq();"> here</a>' +' for details';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "borrower_request_accepted") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Request accepted</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'Your request has been accepted by ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' for ' ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+'</a >';
+          notifs += 'Click' + '<a onclick="bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');promptTest();">'+'here'+'</a>' +' to enter code';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "borrower_borrow_book") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Borrowed a book</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'You have borrowed ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  "'s " ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "owner_borrow_book") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Borrow</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has borrowed your book ' ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "user_rent_book") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Rented a book</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'You have rented '+'<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  "'s " ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "owner_rent_book") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Note!</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has rented your book ' ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "user_purchased_book") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">You bought a Book</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += 'You have purchased '+'<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  "'s " ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "owner_purchased_book") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Purchased</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has purchased your book ' ;
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "borrow_request" ||data.notifications[i].type == "rent_request" ||data.notifications[i].type == "purchase_request") {
+          // diri na part ang naa accept ug reject na button! wala pa js pd 
+          // tawagon si "verification-code" tapos pagdisplay sa code ky si "verification-code-details"
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">Request!</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has sent you a request. ' ;
+          notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');bookindex(\'' + data.notifications[i].book_id + '\');acceptreq();">' +'ACCEPT'+'</a>' + ' ';
+          notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');bookindex(\'' + data.notifications[i].book_id + '\');rejectreq();">' +'REJECT'+'</a>';        
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "user_follow") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">New follower</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has followed you.' ;
+          notifs += '</div>';
+          notifs += '</div>';
+        }else if (data.notifications[i].type == "follower_new_book") {
+          notifs += '<li>';
+          notifs += '<div class="item-inner">';
+          notifs += '<div class="item-title-row">';
+          notifs += '<div class="item-title">New Book</div>';
+          notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
+          notifs += '</div>';
+          notifs += '</div class="item-text">';
+          notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has added a new ';
+          notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
+          notifs += '</div>';
+          notifs += '</div>';
+        }
       }
-      else if (data.notifications[i].type == "borrower_borrow_one_day" || data.notifications[i].type == "renter_rent_one_day") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Note!</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'Book must be returned tomorrow. Please confirm if you have returned ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  "'s " ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-
-      }else if (data.notifications[i].type == "owner_borrow_one_day" || data.notifications[i].type == "owner_rent_one_day") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Note!</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'Book must be returned tomorrow. Verify that ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has returned your ';
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-
-      }
-       else if (data.notifications[i].type == "owner_borrow_today") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Note!</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'Book must be returned today. Verify that ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has returned your ' ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-
-      } else if (data.notifications[i].type == "borrower_borrow_today") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Note!</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'Book must be returned today. Please confirm if you have returned ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has returned your ' ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-      } else if (data.notifications[i].type == "owner_returned_successful") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Returned</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has returned your ' ;
-        notifs += '<a onclick="bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+'</a >' + '. Leave a rating.';
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "borrower_returned_successful") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Thank you!</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'Thank you for returning the book.';
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >' + '. Leave a rating.';
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "borrower_borrow_return_") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">please,Confirm!</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'Please confirm if you have returned ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  "'s " ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "owner_request_accepted") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Accepted request</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'You have accepted the request of ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' for your ';
-        notifs += '<a onclick="bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" hre ="/item/">'+'book.'+'</a>';
-        notifs += 'Click' + '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].borrower + '\');acceptreq();"> here</a>' +' for details';
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "borrower_request_accepted") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Request accepted</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'Your request has been accepted by ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' for ' ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+'</a >';
-        notifs += 'Click' + '<a onclick="bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');promptTest();">'+'here'+'</a>' +' to enter code';
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "borrower_borrow_book") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Borrowed a book</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'You have borrowed ' + '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  "'s " ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-      }
-      else if (data.notifications[i].type == "owner_borrow_book") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Borrow</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has borrowed your book ' ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "user_rent_book") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Rented a book</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'You have rented '+'<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  "'s " ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "owner_rent_book") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Note!</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has rented your book ' ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "user_purchased_book") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">You bought a Book</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += 'You have purchased '+'<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  "'s " ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "owner_purchased_book") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Purchased</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has purchased your book ' ;
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "borrow_request" ||data.notifications[i].type == "rent_request" ||data.notifications[i].type == "purchase_request") {
-        // diri na part ang naa accept ug reject na button! wala pa js pd 
-        // tawagon si "verification-code" tapos pagdisplay sa code ky si "verification-code-details"
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">Request!</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has sent you a request. ' ;
-        notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');bookindex(\'' + data.notifications[i].book_id + '\');acceptreq();">' +'ACCEPT'+'</a>' + ' ';
-        notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');bookindex(\'' + data.notifications[i].book_id + '\');rejectreq();">' +'REJECT'+'</a>';        
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "user_follow") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">New follower</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has followed you.' ;
-        notifs += '</div>';
-        notifs += '</div>';
-      }else if (data.notifications[i].type == "follower_new_book") {
-        notifs += '<li>';
-        notifs += '<div class="item-inner">';
-        notifs += '<div class="item-title-row">';
-        notifs += '<div class="item-title">New Book</div>';
-        notifs += '<div class="item-after">' + data.notifications[i].time + '</div>';
-        notifs += '</div>';
-        notifs += '</div class="item-text">';
-        notifs += '<a onclick="bookowner(\'' + data.notifications[i].borrower + '\');viewprofile();" href="/viewprofile/">' + data.notifications[i].borrower_fname + ' ' + data.notifications[i].borrower_lname + '</a>' +  ' has added a new ';
-        notifs += '<a onclick = "bookindex(\'' + data.notifications[i].book_id + '\');bookowner(\'' + data.notifications[i].owner_username + '\');onebook()" href = "/item/" >'+'book.'+' </a >';
-        notifs += '</div>';
-        notifs += '</div>';
-      }
-    }
-    $('#notif').append(notifs);
+      $('#notif').append(notifs);
 
 
-  },
-  error: function (data) {
-    alert("user is not found");
-  },
+    },
+    error: function (data) {
+      alert("user is not found");
+    },
     complete: function (data){
       app.dialog.close();
     }
-});
+  });
 }
 
 
@@ -2883,6 +2875,7 @@ function borrow_return(){
     }
   });
 }
+
 function borrow_return_request() {
   var tokens = localStorage.getItem('token');
   var user = localStorage.getItem('username');
@@ -2908,6 +2901,7 @@ function borrow_return_request() {
     }
   });
 }
+
 function rent_return() {
   var tokens = localStorage.getItem('token');
   var user = localStorage.getItem('username');
@@ -3009,7 +3003,6 @@ function visitviewbooks() {
   });
 }
 
-
 function acceptreq() {
   var tokens = localStorage.getItem('token');
   var id = localStorage.getItem('bookid');
@@ -3051,6 +3044,7 @@ function acceptreq() {
     }
   });
 } 
+
 function rejectreq() {
   var tokens = localStorage.getItem('token');
   var id = localStorage.getItem('bookid');
@@ -3680,5 +3674,80 @@ function displayotherfollowing(){
     }
   }); 
 }
+
+function view_edit_profile(){
+  var tokens = localStorage.getItem('token');
+  var username = localStorage.getItem('bookowners');
+  loops = [];
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/user/info/' + username,
+    method: "GET",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: 'json',
+    crossDomain: true,
+    success: function(data) {
+      console.log(data);
+      $("#first_name"),html('');
+      $("#first_name").val(data.user.first_name);
+      $("#last_name").html('');
+      $("#last_name").append(data.user.lastname);
+      $("#contact_number").html('');
+      $("#contact_number").append(data.user.contact_number);
+      $("#username").html('');
+      $("#username").append(data.user.username);
+      $("#password").html('');
+      $("#password").append(data.user.password);
+      $("#birth_date").html('');
+      $("#birth_date").append(moment(data.user.birth_date).format('MMMM D Y'));
+      $("#gender").html('');
+      $("#gender").append(data.user.gender);
+      $("#address").html('');
+      $("#address").append(data.user.address);
+    },
+    error: function(data) {
+      console.log(data);
+    }
+  });
+}
+
+function viewprofile() {
+  var tokens = localStorage.getItem('token');
+  var username = localStorage.getItem('bookowners');
+  loops = [];
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/user/info/' + username,
+    method: "GET",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    success: function (data) {
+      console.log(data);
+      // app.dialog.alert(data);
+      $("#name").html('');
+      $("#name").append('<h2>' + data.user.first_name + ' ' + data.user.last_name + '</h2>');
+      $("#contact").html('');
+      $("#contact").append(data.user.contact_number)
+      $("#contact").html('');
+      $("#contact").append(data.user.contact_number)
+      // userName in side pannel
+      $("#showuser").html('');
+      $("#showuser").append(data.user.username)
+      $("#bday").html('');
+      $("#bday").append(moment(data.user.birth_date).format('MMMM D Y'));
+      $("#gender").html('');
+      $("#gender").append(data.user.gender)
+      $("#address").html('');
+      $("#address").append(data.user.address)
+    },
+    error: function (data) {
+      console.log(data);
+    }
+
+  });
+}
+
+
 
 app.init();

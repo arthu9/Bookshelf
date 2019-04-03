@@ -9,52 +9,69 @@
       </div>
       <div class="title">Edit Profile</div>
       <div class="right">
-      	<button class="col button button-fill color-green">Done</button>
+      	<button class="col button button-fill color-green" style="margin-right: 10px; padding-top: 3px">
+          <i class="f7-icons">check</i> 
+        </button>
       </div>
     </div>
   </div>
   <div class="page-content">
-  	<ul>
-      <li>
-        <div class="item-content item-input">
-          <div class="item-inner">
-            <div class="item-title item-label">Username</div>
-            <div class="item-input-wrap">
-              <input type="text" placeholder="Enter desired username" name="username" id="username" required validator />
+    <div class="block" style="margin: 0 !important; padding:  0 !important;">
+      <div class="image-holder">
+        <img src="images/sample profile.jpg" class="round imongmama2" id="imongmama2">
+        <img src="images/upload.png" class="round imongmama1" id="imongmama1">
+      </div>
+    </div>
+    <form id="edit_prof_form">
+      <div class="list">
+        <ul>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">First Name</div>
+              <div class="item-input-wrap">
+                <input type="text" id="first_name" value="" required validate>
+                <span class="input-clear-button"></span>
+              </div>
             </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content item-input">
-          <div class="item-inner">
-            <div class="item-title item-label">First Name</div>
-            <div class="item-input-wrap">
-              <input type="password" placeholder="Enter desired password" id="password" name="password" required validator />
+          </li>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Last Name</div>
+              <div class="item-input-wrap">
+                <input type="text" id="last_name" name="last_name" placeholder="Last Name" required validate>
+                <span class="input-clear-button"></span>
+              </div>
             </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content item-input">
-          <div class="item-inner">
-            <div class="item-title item-label">Last Name</div>
-            <div class="item-input-wrap">
-              <input type="password" placeholder="Enter desired password" id="password" name="password" required validator />
+          </li>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Contact Number</div>
+              <div class="item-input-wrap">
+                <input type="text" id="contact_number" name="contact_number" placeholder="Contact Number" required validate>
+                <span class="input-clear-button"></span>
+              </div>
             </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content item-input">
-          <div class="item-inner">
-            <div class="item-title item-label">First Name</div>
-            <div class="item-input-wrap">
-              <input type="password" placeholder="Enter desired password" id="password" name="password" required validator />
+          </li>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Email</div>
+              <div class="item-input-wrap">
+                <input type="text" id="email" name="email" placeholder="Email" required validate>
+                <span class="input-clear-button"></span>
+              </div>
             </div>
-          </div>
-        </div>
-      </li>
-    </ul>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Username</div>
+              <div class="item-input-wrap">
+                <input type="text" id="" name="contact_number" placeholder="Contact Number" required validate>
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </form>
   </div>
 </div>

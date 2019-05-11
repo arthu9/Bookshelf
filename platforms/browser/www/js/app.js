@@ -1927,43 +1927,6 @@ function follow() {
   });
 }
 
-function viewprofile() {
-  var tokens = localStorage.getItem('token');
-  var username = localStorage.getItem('bookowners');
-  loops = [];
-  app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/info/' + username,
-    method: "GET",
-    contentType: 'application/json; charset=utf-8',
-    headers: { 'x-access-token': tokens },
-    dataType: "json",
-    crossDomain: true,
-    success: function (data) {
-      console.log(data);
-      // app.dialog.alert(data);
-      $("#name").html('');
-      $("#name").append('<h2>' + data.user.first_name + ' ' + data.user.last_name + '</h2>');
-      $("#contact").html('');
-      $("#contact").append(data.user.contact_number)
-      $("#contact").html('');
-      $("#contact").append(data.user.contact_number)
-      // userName in side pannel
-      $("#showuser").html('');
-      $("#showuser").append(data.user.username)
-      $("#bday").html('');
-      $("#bday").append(moment(data.user.birth_date).format('MMMM D Y'));
-      $("#gender").html('');
-      $("#gender").append(data.user.gender)
-      $("#address").html('');
-      $("#address").append(data.user.address)
-    },
-    error: function (data) {
-      console.log(data);
-    }
-
-  });
-}
-
 
 // <-- code from brex -->
 
@@ -3676,20 +3639,18 @@ function displayotherfollowing(){
 }
 
 function view_edit_profile(){
+  var username = localStorage.getItem('username');
   var tokens = localStorage.getItem('token');
-  var username = localStorage.getItem('bookowners');
-  loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/info/' + username,
-    method: "GET",
+    url: 'https://desolate-basin-69053.herokuapp.com/user/info/'+username ,
+    type: "GET",
     contentType: 'application/json; charset=utf-8',
+    dataType: "json",
     headers: { 'x-access-token': tokens },
-    dataType: 'json',
-    crossDomain: true,
-    success: function(data) {
+    success: function(data) { 
       console.log(data);
-      $("#first_name"),html('');
-      $("#first_name").val(data.user.first_name);
+      $("#first_name").html('');
+      $("#first_name").append(data.user.first_name);
       $("#last_name").html('');
       $("#last_name").append(data.user.lastname);
       $("#contact_number").html('');
@@ -3708,6 +3669,43 @@ function view_edit_profile(){
     error: function(data) {
       console.log(data);
     }
+  });
+}
+
+function viewprofile() {
+  var tokens = localStorage.getItem('token');
+  var username = localStorage.getItem('bookowners');
+  loops = [];
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/user/info/' + username,
+    method: "GET",
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    success: function (data) {
+      console.log(data);
+      // app.dialog.alert(data);
+      $("#name").html('');
+      $("#name").append('<h2>' + data.user.first_name + ' ' + data.user.last_name + '</h2>');
+      $("#contact").html('');
+      $("#contact").append(data.user.contact_number)
+      $("#contact").html('');
+      $("#contact").append(data.user.contact_number)
+      // userName in side pannel
+      $("#showuser").html('');
+      $("#showuser").append(data.user.username)
+      $("#bday").html('');
+      $("#bday").append(moment(data.user.birth_date).format('MMMM D Y'));
+      $("#gender").html('');
+      $("#gender").append(data.user.gender)
+      $("#address").html('');
+      $("#address").append(data.user.address)
+    },
+    error: function (data) {
+      console.log(data);
+    }
+
   });
 }
 

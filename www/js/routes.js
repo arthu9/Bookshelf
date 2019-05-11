@@ -90,10 +90,9 @@ var routes = [
     path: '/edit_profile/',
     url: './pages/edit_profile.html',
     on:{
-        pageInit: function(e, page){
-          app.dialog.preloader();
-          view_edit_profile();
-        }
+      pageInit: function (e, page){
+        view_edit_profile();
+      },
     }
   },
   {
@@ -1092,6 +1091,32 @@ function myprofileinfo(){
           });
 }
 
+function view_edit_profile(){
+  var username = localStorage.getItem('username');
+  var tokens = localStorage.getItem('token');
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/user/info/'+username ,
+    type: "GET",
+    contentType: 'application/json; charset=utf-8',
+    dataType: "json",
+    headers: { 'x-access-token': tokens },
+    success: function(data) { 
+      console.log(data);
+      $("#first_name").html('');
+      $('.page[data-name="edit_profile"] input[name="first_name"]').val('imongmama');
+      $('.page[data-name="edit_profile"] input[name="last_name"]').val('imongmama');
+      $("#contact_number").val(data.user.contact_number);
+      $("#username").val(data.user.username);
+      $("#password").val(data.user.password);
+      $("#birth_date").val(moment(data.user.birth_date).format('MMMM D Y'));
+      $("#gender").val(data.user.gender);
+      $("#address").val(data.user.address);
+    },
+    error: function(data) {
+      console.log(data);
+    }
+  });
+}
 
 
 

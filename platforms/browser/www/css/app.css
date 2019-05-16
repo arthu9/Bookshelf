@@ -88,7 +88,7 @@
     width: 100% !important;
     height: 50% !important;
     text-align: center;
-    padding: 5% 0;
+    padding: 2% 0;
   }
 
   .round{
@@ -156,13 +156,15 @@ form .searchbar3{
 }
 
 .imongmama1 {
-  z-index: 6000;
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* z-index: 6000; */
+  position: relative;
+  /* top: 0;
+  left: 0; */
 }
 
 .imongmama2{
-  z-index: 6000;
+  /* z-index: 6000; */
   position: absolute;
+  /* top: 0;
+  left: 0; */
 }

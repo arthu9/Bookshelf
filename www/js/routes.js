@@ -91,6 +91,7 @@ var routes = [
     url: './pages/edit_profile.html',
     on:{
       pageInit: function (e, page){
+        app.dialog.preloader();
         view_edit_profile();
       },
     }
@@ -1003,120 +1004,91 @@ function latesteditionSearch(){
 }
 
 function myprofileinfo(){
-          var username = localStorage.getItem('username');
-          var tokens = localStorage.getItem('token');
-          app.request({
-          url: 'https://desolate-basin-69053.herokuapp.com/user/info/'+username ,
-          type: "GET",
-          contentType: 'application/json; charset=utf-8',
-          dataType: "json",
-          headers: { 'x-access-token': tokens },
-          success: function(data){
-            console.log(data)
-            // user info in userprofile.html
-            $("#name").html('');
-            $("#name").append('<h2>'+data.user.first_name+' '+data.user.last_name+'</h2>');
-            $("#contact").html('');
-            $("#contact").append(data.user.contact_number)
-            $("#contact").html('');
-            $("#contact").append(data.user.contact_number)
-            // userName in side pannel
-            $("#showuser").html('');
-            $("#showuser").append(data.user.username)
-            $("#bday").html('');
-            $("#bday").append(moment(data.user.birth_date).format('MMMM D Y'));
-            $("#gender").html('');
-            $("#gender").append(data.user.gender)
-            $("#address").html('');
-            $("#address").append(data.user.address)
-          },
-          error: function(data){
-              alert("user is not found");
-          }
-         });
-          app.request({
-            url: 'https://desolate-basin-69053.herokuapp.com/activity_logs_mobile',
-            type: "POST",
-            contentType: 'application/json; charset=utf-8',
-            dataType: "json",
-            headers: { 'x-access-token': tokens },
-            data: JSON.stringify({
-              "current_user": username
-            }),
-            success: function (data) {
-              console.log("jdjddjdj")
-              var log = "";
-              logs = []
-              for (var i = 0; i < data.activities.length; i++) {
-              log += '<div class="timeline-item">';
-                log += '<div class="timeline-item-date">' + data.activities[i].date+ '</div>';
-               log += '<div class="timeline-item-divider"></div>';
-               log += '<div class="timeline-item-content">';
-               log += '<div class="timeline-item-inner">';
-                log += '<div class="timeline-item-time">' + data.activities[i].time+'</div>';
-              log += '<div class="timeline-item-text">' + data.activities[i].content+'</div>';
-               log += '</div>';
-               log += '</div>';
-               log += '</div >';
-              }
-              $('#logs').append(log);
-            },
-            error: function (data) {
-              alert("user is not found");
-            }
-          });
-
-          app.request({
-            url: 'https://desolate-basin-69053.herokuapp.com/notifications',
-            type: "POST",
-            contentType: 'application/json; charset=utf-8',
-            dataType: "json",
-            headers: { 'x-access-token': tokens },
-            data: JSON.stringify({
-              "current_user": username
-            }),
-            success: function (data) {
-              console.log(data)
-              console.log("hshhhhs")
-              var unreads = "";
-              var notifs = "";
-              var unread = data.total;
-              unreads += unread;
-              $('#unread').append(unreads);
-              app.dialog.close();
-            },
-            error: function (data) {
-              alert("user is not found");
-            }
-          });
-}
-
-function view_edit_profile(){
   var username = localStorage.getItem('username');
   var tokens = localStorage.getItem('token');
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/info/'+username ,
-    type: "GET",
+  url: 'https://desolate-basin-69053.herokuapp.com/user/info/'+username ,
+  type: "GET",
+  contentType: 'application/json; charset=utf-8',
+  dataType: "json",
+  headers: { 'x-access-token': tokens },
+  success: function(data){
+    console.log(data)
+    // user info in userprofile.html
+    $("#name").html('');
+    $("#name").append('<h2>'+data.user.first_name+' '+data.user.last_name+'</h2>');
+    $("#contact").html('');
+    $("#contact").append(data.user.contact_number)
+    $("#contact").html('');
+    $("#contact").append(data.user.contact_number)
+    // userName in side pannel
+    $("#showuser").html('');
+    $("#showuser").append(data.user.username)
+    $("#bday").html('');
+    $("#bday").append(moment(data.user.birth_date).format('MMMM D Y'));
+    $("#gender").html('');
+    $("#gender").append(data.user.gender)
+    $("#address").html('');
+    $("#address").append(data.user.address)
+  },
+  error: function(data){
+      alert("user is not found");
+  }
+ });
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/activity_logs_mobile',
+    type: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
     headers: { 'x-access-token': tokens },
-    success: function(data) { 
-      console.log(data);
-      $("#first_name").html('');
-      $('.page[data-name="edit_profile"] input[name="first_name"]').val('imongmama');
-      $('.page[data-name="edit_profile"] input[name="last_name"]').val('imongmama');
-      $("#contact_number").val(data.user.contact_number);
-      $("#username").val(data.user.username);
-      $("#password").val(data.user.password);
-      $("#birth_date").val(moment(data.user.birth_date).format('MMMM D Y'));
-      $("#gender").val(data.user.gender);
-      $("#address").val(data.user.address);
+    data: JSON.stringify({
+      "current_user": username
+    }),
+    success: function (data) {
+      console.log("jdjddjdj")
+      var log = "";
+      logs = []
+      for (var i = 0; i < data.activities.length; i++) {
+      log += '<div class="timeline-item">';
+        log += '<div class="timeline-item-date">' + data.activities[i].date+ '</div>';
+       log += '<div class="timeline-item-divider"></div>';
+       log += '<div class="timeline-item-content">';
+       log += '<div class="timeline-item-inner">';
+        log += '<div class="timeline-item-time">' + data.activities[i].time+'</div>';
+      log += '<div class="timeline-item-text">' + data.activities[i].content+'</div>';
+       log += '</div>';
+       log += '</div>';
+       log += '</div >';
+      }
+      $('#logs').append(log);
     },
-    error: function(data) {
-      console.log(data);
+    error: function (data) {
+      alert("user is not found");
+    }
+  });
+
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/notifications',
+    type: "POST",
+    contentType: 'application/json; charset=utf-8',
+    dataType: "json",
+    headers: { 'x-access-token': tokens },
+    data: JSON.stringify({
+      "current_user": username
+    }),
+    success: function (data) {
+      console.log(data)
+      console.log("hshhhhs")
+      var unreads = "";
+      var notifs = "";
+      var unread = data.total;
+      unreads += unread;
+      $('#unread').append(unreads);
+      app.dialog.close();
+    },
+    error: function (data) {
+      alert("user is not found");
     }
   });
 }
-
-
 

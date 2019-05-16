@@ -163,25 +163,25 @@ function checkLogin(){
 }
 
 function searchCheck(that) {
-      if (that.value == "isbn_") {
-          console.log(that.value);
-          document.getElementById("isbn-check").style.display = "block";
-          document.getElementById("author-check").style.display = "none";
-          document.getElementById("title-check").style.display = "none";
-      } else if (that.value == "author_") {
-          console.log(that.value);
-          document.getElementById("author-check").style.display = "block";
-          document.getElementById("isbn-check").style.display = "none";
-          document.getElementById("title-check").style.display = "none";
-      } else if (that.value == "title_") {
-          console.log(that.value);
-          document.getElementById("title-check").style.display = "block";
-          document.getElementById("author-check").style.display = "none";
-          document.getElementById("isbn-check").style.display = "none";
-      } else {
-          document.getElementById("ifYes").style.display = "none";
-      }
+  if (that.value == "isbn_") {
+    console.log(that.value);
+    document.getElementById("isbn-check").style.display = "block";
+    document.getElementById("author-check").style.display = "none";
+    document.getElementById("title-check").style.display = "none";
+  } else if (that.value == "author_") {
+      console.log(that.value);
+      document.getElementById("author-check").style.display = "block";
+      document.getElementById("isbn-check").style.display = "none";
+      document.getElementById("title-check").style.display = "none";
+  } else if (that.value == "title_") {
+      console.log(that.value);
+      document.getElementById("title-check").style.display = "block";
+      document.getElementById("author-check").style.display = "none";
+      document.getElementById("isbn-check").style.display = "none";
+  } else {
+      document.getElementById("ifYes").style.display = "none";
   }
+}
 
 function paymentMethod1() {
   var checkRate = document.getElementById("options2");
@@ -3648,29 +3648,70 @@ function view_edit_profile(){
     dataType: "json",
     headers: { 'x-access-token': tokens },
     success: function(data) { 
-      console.log(data);
-      $("#first_name").html('');
-      $("#first_name").append(data.user.first_name);
-      $("#last_name").html('');
-      $("#last_name").append(data.user.lastname);
-      $("#contact_number").html('');
-      $("#contact_number").append(data.user.contact_number);
-      $("#username").html('');
-      $("#username").append(data.user.username);
-      $("#password").html('');
-      $("#password").append(data.user.password);
-      $("#birth_date").html('');
-      $("#birth_date").append(moment(data.user.birth_date).format('MMMM D Y'));
-      $("#gender").html('');
-      $("#gender").append(data.user.gender);
-      $("#address").html('');
-      $("#address").append(data.user.address);
+      console.log(data.user.first_name);
+      var user_id = localStorage.setItem(data.user.id);
+      $('#user_id').html('');
+      $('#user_id').append(data.user.id);
+      $("input#first_name").html('');
+      $("input#first_name").val(data.user.first_name);
+      $("input#last_name").html('');
+      $("input#last_name").val(data.user.last_name);
+      $("input#contact_number").html('');
+      $("input#contact_number").val(data.user.contact_number);
+      $("input#username").html('');
+      $("input#username").val(data.user.username);
+      $("input#password").html('');
+      $("input#password").val(data.user.password);
+      $("input#birth_date").html('');
+      $("input#birth_date").val(moment(data.user.birth_date).format('MMMM D Y'));
+      $("input#gender").html('');
+      $("input#gender").val(data.user.gender);
+      $("input#address").html('');
+      $("input#address").val(data.user.address);
+      app.dialog.close(); 
     },
     error: function(data) {
       console.log(data);
     }
   });
 }
+
+function update_profile(){
+  app.dialog.preloader();
+  var user_id = localStorage.getItem('user_id');
+  var fname = $('input#first_name').val();
+  var lname = $('input#last_name').val();
+  var cont_num = $('input#contact_number').val();
+  var gender = $('input#gender').val();
+  var address = $('input#address').val();
+  var username = $('input#username').val();
+  app.request({
+    url: 'https://desolate-basin-69053.herokuapp.com/user/info/'+ user_id +'/update',
+    type: 'POST'
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    data: JSON.stringify({
+      'user_id': user_id,
+      'first_name': fname,
+      'last_name': lname,
+      'contact_number': contact_number,
+      'gender': gender,
+      'username': username,
+      'address': address
+    })
+    crossDomain: true;
+    success: function(resp){
+      app.dialog.close();
+      app.dialog.alert('update complete');
+    },
+    error: function(e){
+      app.dialog.close();
+      app.dialog.alert('na yawa ani');
+      consoe.log(e);
+    }
+  });
+}
+
 
 function viewprofile() {
   var tokens = localStorage.getItem('token');

@@ -2,7 +2,7 @@
 	<div class="navbar">
     <div class="navbar-inner sliding">
       <div class="left">
-        <a href="/" class="link back">
+        <a href="#" class="link back">
           <i class="icon icon-back"></i>
           <span class="ios-only">Back</span>
         </a>
@@ -20,16 +20,22 @@
       <div class="image-holder">
         <img src="images/sample profile.jpg" class="round imongmama2" id="imongmama2">
         <img src="images/upload.png" class="round imongmama1" id="imongmama1">
+        <div class="round-title" id="name"></div> 
       </div>
     </div>
     <form id="edit_prof_form">
       <div class="list">
         <ul>
+          <li class="item-content">
+            <div class="item-title">
+              Id: <b id="user_id"></b>
+            </div>
+          </li>
           <li class="item-content item-input">
             <div class="item-inner">
               <div class="item-title item-label">First Name</div>
               <div class="item-input-wrap">
-                <input type="text" name="first_name">
+                <input type="text" id="first_name" >
                 <span class="input-clear-button"></span>
               </div>
             </div>
@@ -38,7 +44,7 @@
             <div class="item-inner">
               <div class="item-title item-label">Last Name</div>
               <div class="item-input-wrap">
-                <input type="text" name="last_name">
+                <input type="text" id="last_name" />
                 <span class="input-clear-button"></span>
               </div>
             </div>
@@ -47,16 +53,7 @@
             <div class="item-inner">
               <div class="item-title item-label">Contact Number</div>
               <div class="item-input-wrap">
-                <input type="text" name="contact_number">
-                <span class="input-clear-button"></span>
-              </div>
-            </div>
-          </li>
-          <li class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label">Email</div>
-              <div class="item-input-wrap">
-                <input type="text" name="email">
+                <input type="text" id="contact_number" />
                 <span class="input-clear-button"></span>
               </div>
             </div>
@@ -65,7 +62,7 @@
             <div class="item-inner">
               <div class="item-title item-label">Username</div>
               <div class="item-input-wrap">
-                <input type="text" name="username">
+                <input type="text" id="username" />
                 <span class="input-clear-button"></span>
               </div>
             </div>

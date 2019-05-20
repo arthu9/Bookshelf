@@ -93,6 +93,7 @@ var routes = [
       pageInit: function (e, page){
         app.dialog.preloader();
         view_edit_profile();
+        show_profpic();
       },
     }
   },
@@ -148,6 +149,7 @@ var routes = [
           showmyrating();
           get_followers();
           get_following();
+          show_profpic();
         }
     }
   },

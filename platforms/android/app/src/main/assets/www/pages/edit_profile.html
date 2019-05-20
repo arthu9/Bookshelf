@@ -9,7 +9,7 @@
       </div>
       <div class="title">Edit Profile</div>
       <div class="right">
-      	<button class="col button button-fill color-green" style="margin-right: 10px; padding-top: 3px">
+      	<button class="col button button-fill color-green" style="margin-right: 10px; padding-top: 3px" onclick="update_profile()">
           <i class="f7-icons">check</i> 
         </button>
       </div>
@@ -17,20 +17,14 @@
   </div>
   <div class="page-content">
     <div class="block" style="margin: 0 !important; padding:  0 !important;">
-      <div class="image-holder">
-        <img src="images/sample profile.jpg" class="round imongmama2" id="imongmama2">
-        <img src="images/upload.png" class="round imongmama1" id="imongmama1">
-        <div class="round-title" id="name"></div> 
+      <div class="image-holder" >
+        <img class="round imongmama2" id="imongmama2">
+        <img src="images/upload.png" class="round imongmama1" id="imongmama1"> 
       </div>
     </div>
     <form id="edit_prof_form">
       <div class="list">
         <ul>
-          <li class="item-content">
-            <div class="item-title">
-              Id: <b id="user_id"></b>
-            </div>
-          </li>
           <li class="item-content item-input">
             <div class="item-inner">
               <div class="item-title item-label">First Name</div>
@@ -67,6 +61,16 @@
               </div>
             </div>
           </li>
+          <li class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Picture</div>
+              <div class="item-input-wrap">
+                <input type="file" id="photo" />
+                <span class="input-clear-button"></span>
+              </div>
+            </div>
+          </li>
+          <button class="col button button-fill color-green" onclick="upload_photo()">Upload Photo</button>
         </ul>
       </div>
     </form>

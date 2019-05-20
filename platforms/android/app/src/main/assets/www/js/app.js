@@ -3648,8 +3648,7 @@ function view_edit_profile(){
     dataType: "json",
     headers: { 'x-access-token': tokens },
     success: function(data) { 
-      console.log(data.user.first_name);
-      var user_id = localStorage.setItem(data.user.id);
+      localStorage.setItem('user_id', data.user.id);
       $('#user_id').html('');
       $('#user_id').append(data.user.id);
       $("input#first_name").html('');
@@ -3679,17 +3678,19 @@ function view_edit_profile(){
 function update_profile(){
   app.dialog.preloader();
   var user_id = localStorage.getItem('user_id');
+  var tokens = localStorage.getItem('token');
   var fname = $('input#first_name').val();
   var lname = $('input#last_name').val();
-  var cont_num = $('input#contact_number').val();
+  var contact_number = $('input#contact_number').val();
   var gender = $('input#gender').val();
   var address = $('input#address').val();
   var username = $('input#username').val();
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/info/'+ user_id +'/update',
-    type: 'POST'
+    url: 'http://127.0.0.1:5000/user/info/'+ user_id +'/update',
+    type: 'POST',
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
+    headers: {'x-access-token': tokens},
     data: JSON.stringify({
       'user_id': user_id,
       'first_name': fname,
@@ -3698,16 +3699,19 @@ function update_profile(){
       'gender': gender,
       'username': username,
       'address': address
-    })
-    crossDomain: true;
+    }),
+    crossDomain: true,
     success: function(resp){
+      console.log(resp);
       app.dialog.close();
-      app.dialog.alert('update complete');
+      app.dialog.alert('Update Complete');
+      mainView.router.navigate('/');
+      checkLogin();
     },
     error: function(e){
       app.dialog.close();
-      app.dialog.alert('na yawa ani');
-      consoe.log(e);
+      app.dialog.alert("There's an Error! Please Try Again.");
+      console.log(e);
     }
   });
 }
@@ -3748,6 +3752,60 @@ function viewprofile() {
     }
 
   });
+}
+
+function upload_photo(){
+  app.dialog.preloader();
+  var user_id = localStorage.getItem('user_id');
+  var tokens = localStorage.getItem('token');
+  var photo = $('input#photo').val();
+  console.log('imongmama');
+
+  app.request({
+    url: 'http://127.0.0.1:5000/user/info/'+ user_id +'/upload',
+    method: 'POST',
+    dataType: 'image',
+    headers: {'x-access-token': tokens},
+    data: photo,
+    crossDomain: true,
+    success: function(resp){
+      app.dialog.close();
+      app.dialog.alert('upload complete');
+    },
+    error: function(e){
+      app.dialog.close();
+      app.dialog.alert('Error!');
+      console.log(e);
+    }
+  });
+}
+
+function show_profpic(){
+  app.dialog.preloader();
+  var user_id = localStorage.getItem('user_id');
+  var tokens = localStorage.getItem('token');
+  console.log(user_id);
+
+  app.request({
+    url: 'http://127.0.0.1:5000/user/info/'+ user_id +'/photo',
+    method: 'GET',
+    contentType: 'application/json; charset=utf-8',
+    headers: { 'x-access-token': tokens },
+    dataType: "json",
+    crossDomain: true,
+    success: function(data){
+      var img = data.img;
+      document.getElementById("imongmama2").src = img;
+      app.dialog.close();
+    },
+    error: function(e){
+      app.dialog.close();
+      app.dialog.alert("Couldn't display profile picture.");
+      console.log(e);
+    }
+  });
+  // var img = "https://res.cloudinary.com/dal7ygjnn/image/upload/v1558302177/sample_profpic.jpg"
+  // document.getElementById("imongmama2").src = img;
 }
 
 

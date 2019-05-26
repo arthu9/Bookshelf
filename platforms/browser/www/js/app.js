@@ -909,7 +909,6 @@ function borrow() {
 }
 
 function rent() {
-  var tokens = localStorage.getItem('token')
   var owner = localStorage.getItem('bookowners');
   var user = localStorage.getItem('username');
   var ownerid = localStorage.getItem('ownerid');
@@ -918,10 +917,9 @@ function rent() {
   var returndate = document.getElementById("returndate1").value;
   console.log(returndate);
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/rent_book',
+    url: 'http://127.0.0.1:5000/bookshelf/rent_book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
-    headers: { 'x-access-token': tokens },
     dataType: "json",
     crossDomain: true,
     data: JSON.stringify({
@@ -3758,21 +3756,32 @@ function upload_photo(){
   app.dialog.preloader();
   var user_id = localStorage.getItem('user_id');
   var tokens = localStorage.getItem('token');
+  var file = document.getElementById('photo').files[0];
   var photo = $('input#photo').val();
-  console.log('imongmama');
+  var img_type = photo.substring(photo.indexOf('.')+1);
+  var filename = photo.substring(0,photo.lastIndexOf('.'));
+  var start = 0;
+  for ( var i = 0; i <= filename.length ; i++) {
+    if (filename[i] == '\\') {
+      start = i+1;
+    }
+  }
+  filename = photo.substring(start, photo.lastIndexOf('.'));
 
   app.request({
     url: 'http://127.0.0.1:5000/user/info/'+ user_id +'/upload',
     method: 'POST',
-    dataType: 'image',
+    dataType: 'json',
     headers: {'x-access-token': tokens},
-    data: photo,
+    data: { file: file  },
     crossDomain: true,
     success: function(resp){
+      console.log(resp.message);
       app.dialog.close();
-      app.dialog.alert('upload complete');
+      app.dialog.alert(resp);
     },
     error: function(e){
+      console.log(e);
       app.dialog.close();
       app.dialog.alert('Error!');
       console.log(e);

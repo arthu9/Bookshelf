@@ -65,12 +65,13 @@
             <div class="item-inner">
               <div class="item-title item-label">Picture</div>
               <div class="item-input-wrap">
-                <input type="file" id="photo" />
-                <span class="input-clear-button"></span>
+                <form method="post" enctype="multipart/form-data">
+                  <input type="file" id="photo" />
+                </form>
               </div>
             </div>
           </li>
-          <button class="col button button-fill color-green" onclick="upload_photo()">Upload Photo</button>
+          <button id="upload" type="button" class="col button color-blue" onclick="upload_photo()">Upload Photo</button>
         </ul>
       </div>
     </form>

@@ -3757,30 +3757,75 @@ function upload_photo(){
   $("#imgInp").change(function () {
     readURL(this);
   });
+  alert("im in");
   var user_id = localStorage.getItem('user_id');
   var tokens = localStorage.getItem('token');
 
-  app.request({
+  // app.request.postJSON('http://127.0.0.1:5000/user/info/'+ user_id + '/upload', 
+  //   formCreate('image',
+  //     $('input[name="image"]')[0].files[0]),
+  //   function (response) {
+  //     if (response.msg == 'ok') {
+  //       alert(response.id + " " + response.img);
+  //     } else {
+  //       alert('error');
+  //     }
+  //   }
+  // );
 
+  $.ajax({
     url: 'http://127.0.0.1:5000/user/info/'+ user_id +'/upload',
-    type: 'POST',
-    crossDomain: true,
-    headers: { 'x-access-token': tokens },
-    dataType: 'json',
+    method: 'POST',
     headers: {'x-access-token': tokens},
-    data: formCreate('image', $('input#imgInp')[0].files[0]),
-    contentType: "multipart/form-data",
-    success: function(data){
+    data: formCreate('image', $('input[name="image"]')[0].files[0]),
+    cache: false,
+    contentType: false,
+    processData: false,
+    async: false,
+    success: function (response) {
       app.dialog.close();
-      router.currentPageEl();
-      app.dialog.alert('Upload Successful');
+      app.dialog.alert("success");
+      if (response.msg == 'ok') {
+        localStorage.setItem('imahe', response.img);
+        alert(response.id + " " + response.img);
+      } else {
+        alert('error');
+      }
     },
-    error: function(e){
-      app.dialog.close();
-      app.dialog.alert("Upload Failed");
-      console.log(e);
-    }
-  });
+  // });
+  // var user_id = localStorage.getItem('user_id');
+  // var tokens = localStorage.getItem('token');
+  // var file = document.getElementById('photo').files[0];
+  // var photo = $('input#photo').val();
+  // var img_type = photo.substring(photo.indexOf('.')+1);
+  // var filename = photo.substring(0,photo.lastIndexOf('.'));
+  // var start = 0;
+  // for ( var i = 0; i <= filename.length ; i++) {
+  //   if (filename[i] == '\\') {
+  //     start = i+1;
+  //   }
+  // }
+  // filename = photo.substring(start, photo.lastIndexOf('.'));
+
+  // app.request({
+  //   url: 'http://127.0.0.1:5000/user/info/'+ user_id +'/upload',
+  //   method: 'POST',
+  //   dataType: 'json',
+  //   headers: {'x-access-token': tokens},
+  //   data: { file: file  },
+  //   crossDomain: true,
+  //   success: function(resp){
+  //     console.log(resp.message);
+  //     app.dialog.close();
+  //     app.dialog.alert(resp);
+  //   },
+  //   error: function(e){
+  //     console.log(e);
+  //     app.dialog.close();
+  //     app.dialog.alert('Error!');
+  //     console.log(e);
+  //   }
+  // });
 }
 
 function readURL(input) {

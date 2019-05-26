@@ -3754,39 +3754,52 @@ function viewprofile() {
 
 function upload_photo(){
   app.dialog.preloader();
+  $("#imgInp").change(function () {
+    readURL(this);
+  });
   var user_id = localStorage.getItem('user_id');
   var tokens = localStorage.getItem('token');
-  var file = document.getElementById('photo').files[0];
-  var photo = $('input#photo').val();
-  var img_type = photo.substring(photo.indexOf('.')+1);
-  var filename = photo.substring(0,photo.lastIndexOf('.'));
-  var start = 0;
-  for ( var i = 0; i <= filename.length ; i++) {
-    if (filename[i] == '\\') {
-      start = i+1;
-    }
-  }
-  filename = photo.substring(start, photo.lastIndexOf('.'));
 
   app.request({
+
     url: 'http://127.0.0.1:5000/user/info/'+ user_id +'/upload',
-    method: 'POST',
+    type: 'POST',
+    crossDomain: true,
+    headers: { 'x-access-token': tokens },
     dataType: 'json',
     headers: {'x-access-token': tokens},
-    data: { file: file  },
-    crossDomain: true,
-    success: function(resp){
-      console.log(resp.message);
+    data: formCreate('image', $('input#imgInp')[0].files[0]),
+    contentType: "multipart/form-data",
+    success: function(data){
       app.dialog.close();
-      app.dialog.alert(resp);
+      router.currentPageEl();
+      app.dialog.alert('Upload Successful');
     },
     error: function(e){
-      console.log(e);
       app.dialog.close();
-      app.dialog.alert('Error!');
+      app.dialog.alert("Upload Failed");
       console.log(e);
     }
   });
+}
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('#imongmama1').attr('src', e.target.result);
+      var img_source = document.getElementById("imgInp").getAttribute('src');
+      document.getElementById('get_src').innerHTML = img_source;
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function formCreate(filetype, fileVal) {
+  var form = new FormData();
+  form.append('img_type', filetype);
+  form.append('image', fileVal);
+  return form;
 }
 
 function show_profpic(){

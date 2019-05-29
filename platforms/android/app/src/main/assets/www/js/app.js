@@ -3632,74 +3632,6 @@ function displayotherfollowing(){
   }); 
 }
 
-function view_edit_profile(){
-  var username = localStorage.getItem('username');
-  var tokens = localStorage.getItem('token');
-  app.request({
-    url: 'https://safe-thicket-54536.herokuapp.com/user/info/'+username ,
-    type: "GET",
-    contentType: 'application/json; charset=utf-8',
-    dataType: "json",
-    headers: { 'x-access-token': tokens },
-    success: function(data) { 
-      localStorage.setItem('user_id', data.user.id);
-      $("input#first_name").html('');
-      $("input#first_name").attr('placeholder', data.user.first_name);
-      $("input#last_name").html('');
-      $("input#last_name").attr('placeholder', data.user.last_name);
-      $("input#contact_number").html('');
-      $("input#contact_number").attr('placeholder', data.user.contact_number);
-      $("input#birth_date").html('');
-      $("input#birth_date").attr('placeholder', moment(data.user.birth_date).format('MMMM D Y'));
-      $("input#address").html('');
-      $("input#address").attr('placeholder', data.user.address);
-      app.dialog.close(); 
-    },
-    error: function(data) {
-      console.log(data);
-    }
-  });
-}
-
-function update_profile(){
-  app.dialog.preloader();
-  var user_id = localStorage.getItem('user_id');
-  var tokens = localStorage.getItem('token');
-  var fname = $('#first_name').val();
-  var lname = $('#last_name').val();
-  var contact_number = $('#contact_number').val();
-  var gender = $('#gender').val();
-  var address = $('#address').val();
-
-  app.request({
-    url: 'https://safe-thicket-54536.herokuapp.com/user/info/'+ user_id +'/update',
-    type: 'POST',
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    headers: {'x-access-token': tokens},
-    data: JSON.stringify({
-      'first_name': fname,
-      'last_name': lname,
-      'contact_number': contact_number,
-      'gender': gender,
-      'address': address
-    }),
-    crossDomain: true,
-    success: function(resp){
-      console.log(resp);
-      app.dialog.close();
-      app.dialog.alert('Update Complete');
-      app.router.navigate('/');
-      checkLogin();
-    },
-    error: function(e){
-      app.dialog.close();
-      app.dialog.alert("There's an Error! Please Try Again.");
-      console.log(e);
-    }
-  });
-}
-
 
 function viewprofile() {
   var tokens = localStorage.getItem('token');
@@ -3738,20 +3670,101 @@ function viewprofile() {
   });
 }
 
+
+
+
+
+
+
+
+
+function view_edit_profile(){
+  var username = localStorage.getItem('username');
+  var tokens = localStorage.getItem('token');
+  app.request({
+    url: 'http://127.0.0.1:5000/user/info/'+username ,
+    type: "GET",
+    contentType: 'application/json; charset=utf-8',
+    dataType: "json",
+    headers: { 'x-access-token': tokens },
+    success: function(data) { 
+      $("input#first_name").html('');
+      $("input#first_name").attr('placeholder', data.user.first_name);
+      $("input#last_name").html('');
+      $("input#last_name").attr('placeholder', data.user.last_name);
+      $("input#contact_number").html('');
+      $("input#contact_number").attr('placeholder', data.user.contact_number);
+      $("input#birth_date").html('');
+      $("input#birth_date").attr('placeholder', moment(data.user.birth_date).format('MMMM D Y'));
+      $("input#address").html('');
+      $("input#address").attr('placeholder', data.user.address);
+      app.dialog.close(); 
+    },
+    error: function(data) {
+      console.log(data);
+    }
+  });
+}
+
+function update_profile(){
+  app.dialog.preloader();
+  var username = localStorage.getItem('username');
+  var tokens = localStorage.getItem('token');
+  var fname = $('#first_name').val();
+  var lname = $('#last_name').val();
+  var contact_number = $('#contact_number').val();
+  var birthdate = $("#birthdate").val();
+  var gender = $('#gender').val();
+  var address = $('#address').val();
+  console.log(fname);
+  console.log(lname);
+  console.log(contact_number);
+  console.log(birthdate);
+  console.log(gender);
+  console.log(address);
+
+  app.request({
+    url: 'http://127.0.0.1:5000/user/info/'+username+"/update",
+    type: 'POST',
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    headers: {'x-access-token': tokens},
+    data: JSON.stringify({
+      'first_name': fname,
+      'last_name': lname,
+      'contact_number': contact_number,
+      'birth_date': birthdate,
+      'gender': gender,
+      'address': address
+    }),
+    crossDomain: true,
+    success: function(resp){
+      app.dialog.close();
+      app.dialog.alert('Update Complete');
+      app.router.navigate('/');
+      checkLogin();
+    },
+    error: function(e){
+      app.dialog.close();
+      app.dialog.alert("There's an Error! Please Try Again.");
+      console.log(e);
+    }
+  });
+}
+
 function upload_photo(){
   app.dialog.preloader();
   $("#imgInp").change(function () {
     readURL(this);
   });
-  var user_id = localStorage.getItem('user_id');
+  var username = localStorage.getItem('username');
   var tokens = localStorage.getItem('token');
 
   app.request({
 
-    url: 'https://safe-thicket-54536.herokuapp.com/user/info/'+ user_id +'/upload',
+    url: 'http://127.0.0.1:5000/user/info/'+ username +'/upload',
     type: 'POST',
     crossDomain: true,
-    headers: { 'x-access-token': tokens },
     dataType: 'json',
     headers: {'x-access-token': tokens},
     data: formCreate('image', $('input#imgInp')[0].files[0]),
@@ -3794,11 +3807,11 @@ function formCreate(filetype, fileVal) {
 
 function show_profpic(){
   app.dialog.preloader();
-  var user_id = localStorage.getItem('user_id');
+  var username = localStorage.getItem('username');
   var tokens = localStorage.getItem('token');
 
   app.request({
-    url: 'https://safe-thicket-54536.herokuapp.com/user/info/'+ user_id +'/photo',
+    url: 'http://127.0.0.1:5000/user/info/'+ username +'/photo',
     method: 'GET',
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },

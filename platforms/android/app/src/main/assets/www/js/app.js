@@ -105,7 +105,7 @@ $('.button-login').on('click', function (e) {
     if(username != '' && password !='' ){
       app.request({
         async: true, 
-        url: 'https://desolate-basin-69053.herokuapp.com/login',
+        url: 'https://safe-thicket-54536.herokuapp.com/login',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify({
             'username': username,
@@ -120,6 +120,7 @@ $('.button-login').on('click', function (e) {
         app.dialog.alert('Invalid username or password!', 'Login Error');
       },
       success: function (data)  {
+
         localStorage.setItem('token', data.token);
         localStorage.setItem('authorization', 'Basic' + btoa(username + ':' +password));
         localStorage.setItem('username', username);
@@ -440,7 +441,7 @@ function signup0(){
   var password = $("#password").val();
   var address = $("#address").val();
   $.ajax({
-    url: "https://desolate-basin-69053.herokuapp.com/signup",
+    url: "https://safe-thicket-54536.herokuapp.com/signup",
     contentType: 'application/json; charset=utf-8',
     data: JSON.stringify({
       'first_name': fname,
@@ -538,7 +539,7 @@ function addbook()
   }
     app.request({  
         async: true, 
-        url: 'https://desolate-basin-69053.herokuapp.com/user/addbook',
+        url: 'https://safe-thicket-54536.herokuapp.com/user/addbook',
         contentType: 'application/json; charset=utf-8',
         headers: {'x-access-token': tokens},
         method: "POST",
@@ -590,7 +591,7 @@ function addbooktitle(title){
 
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/mobile/user/title_check/' + title,
+    url: 'https://safe-thicket-54536.herokuapp.com/mobile/user/title_check/' + title,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -636,7 +637,7 @@ function addbookauthor(author_name){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/mobile/user/author_check/' + author_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/mobile/user/author_check/' + author_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },    
@@ -670,7 +671,7 @@ function get_one(i) {
 function addbookisbn(isbn) {
    var tokens = localStorage.getItem('token');
    app.request({
-      url: 'https://desolate-basin-69053.herokuapp.com/mobile/user/isbn_check/' + isbn,
+      url: 'https://safe-thicket-54536.herokuapp.com/mobile/user/isbn_check/' + isbn,
       contentType: 'application/json; charset=utf-8',
       method: "GET",
       dataType: "json",
@@ -716,7 +717,7 @@ function onebook() {
   loops = [];
   
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/bookshelf/book',
+    url: 'https://safe-thicket-54536.herokuapp.com/user/bookshelf/book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -853,7 +854,7 @@ function checkfollow() {
   var owner = localStorage.getItem('bookowners');
   var user = localStorage.getItem('username');
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/follow-check',
+    url: 'https://safe-thicket-54536.herokuapp.com/follow-check',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -885,7 +886,7 @@ function borrow() {
   var returndate = document.getElementById("returndate").value;
   console.log(returndate);
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/borrow_book',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/borrow_book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -917,7 +918,7 @@ function rent() {
   var returndate = document.getElementById("returndate1").value;
   console.log(returndate);
   app.request({
-    url: 'http://127.0.0.1:5000/bookshelf/rent_book',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/rent_book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
@@ -948,7 +949,7 @@ function sale() {
   var bookid = localStorage.getItem('bookid');
   var ownerid = localStorage.getItem('ownerid');
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/purchase_book',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/purchase_book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -976,7 +977,7 @@ function english() {
   var genre_name = "English"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1009,7 +1010,7 @@ function math() {
   var genre_name = "Math"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1046,7 +1047,7 @@ function history() {
   var genre_name = "History"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1083,7 +1084,7 @@ function Adventure() {
   var genre_name = "Adventure"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1120,7 +1121,7 @@ function Action() {
   var genre_name = "Action"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1157,7 +1158,7 @@ function Drama() {
   var genre_name = "Drama"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1194,7 +1195,7 @@ function Horror() {
   var genre_name = "Horror"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1231,7 +1232,7 @@ function Mystery() {
   var genre_name = "Mystery"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1268,7 +1269,7 @@ function Mythology() {
   var genre_name = "Mythology"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1305,7 +1306,7 @@ function Biography() {
   var genre_name = "Biography"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1342,7 +1343,7 @@ function essay() {
   var genre_name = "Essay"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1379,7 +1380,7 @@ function journalism() {
   var genre_name = "Journalism"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1416,7 +1417,7 @@ function personalnarrative() {
   var genre_name = "Personal Narrative"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1453,7 +1454,7 @@ function referencebook() {
   var genre_name = "Reference Book"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1490,7 +1491,7 @@ function speech(){
   var genre_name = "Speech"
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/interests/view2/' + genre_name,
+    url: 'https://safe-thicket-54536.herokuapp.com/interests/view2/' + genre_name,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1529,7 +1530,7 @@ function search2(that) {
   // console.log(dv);
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/search',
+    url: 'https://safe-thicket-54536.herokuapp.com/search',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1565,7 +1566,7 @@ function recentadded() {
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/recent',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/books/recent',
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1591,7 +1592,7 @@ function topborrow() {
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/latest',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/books/latest',
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1616,7 +1617,7 @@ function toprated() {
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/toprated',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/books/toprated',
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1647,7 +1648,7 @@ function allbooks() {
   var username = localStorage.getItem('username');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/bookshelf',
+    url: 'https://safe-thicket-54536.herokuapp.com/user/bookshelf',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1679,7 +1680,7 @@ function searchall(){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/mobile/bookshelf/books',
+    url: 'https://safe-thicket-54536.herokuapp.com/mobile/bookshelf/books',
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1715,7 +1716,7 @@ function alltoprated(){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/alltoprated',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/books/alltoprated',
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1751,7 +1752,7 @@ function alltoprated(){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/alltoprated',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/books/alltoprated',
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1787,7 +1788,7 @@ function alllatestedition(){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/alllatest',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/books/alllatest',
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1823,7 +1824,7 @@ function allrecentlyadded(){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/books/allrecent',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/books/allrecent',
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1897,7 +1898,7 @@ function follow() {
   var user = localStorage.getItem('username');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/follow',
+    url: 'https://safe-thicket-54536.herokuapp.com/follow',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1911,18 +1912,13 @@ function follow() {
     success: function (data) {
       console.log(data);
       app.dialog.alert(owner,"You followed ");
+      app.views.main.router.navigate(app.views.main.router.currentRoute.url, {reloadCurrent: true,});
     },
     error: function (data) {
       console.log(data);
     },
-    complete: function(data){
-      mainView.router.navigate(mainView.router.currentRoute.url, {
-      ignoreCache  : true,
-      reloadCurrent : true    
   });
-      app.dialog.close();
-    }
-  });
+  app.dialog.close();
 }
 
 
@@ -1938,7 +1934,7 @@ function inbox() {
   var user = localStorage.getItem('username');
   var inbox = "";
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get_inbox',
+    url: 'https://safe-thicket-54536.herokuapp.com/get_inbox',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -1987,7 +1983,7 @@ function chat() {
   var sendto = "";
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get_messages/user',
+    url: 'https://safe-thicket-54536.herokuapp.com/get_messages/user',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2057,7 +2053,7 @@ function sentMessage() {
   var chat = $('#myChat').val();
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/message',
+    url: 'https://safe-thicket-54536.herokuapp.com/message',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2093,7 +2089,7 @@ function sendNewMessage() {
   console.log(user2);
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/message',
+    url: 'https://safe-thicket-54536.herokuapp.com/message',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2123,7 +2119,7 @@ function inbox() {
   var user = localStorage.getItem('username');
   var inbox = "";
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get_inbox',
+    url: 'https://safe-thicket-54536.herokuapp.com/get_inbox',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2168,7 +2164,7 @@ function displayComment() {
   var owner = localStorage.getItem('bookowners');
   var id = localStorage.getItem('bookid');
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/comments/book',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/comments/book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2216,7 +2212,7 @@ function comment() {
   var comment = $('#myComment').val();
   console.log(comment)
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/comment-book',
+    url: 'https://safe-thicket-54536.herokuapp.com/comment-book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2254,7 +2250,7 @@ function rateThis1() {
   var user = localStorage.getItem('username');
   var rating = $('#thisRate1').val();
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rate-book',
+    url: 'https://safe-thicket-54536.herokuapp.com/rate-book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2292,7 +2288,7 @@ function rateThis2() {
   var rating = $('#thisRate2').val();
   console.log(rating)
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rate-book',
+    url: 'https://safe-thicket-54536.herokuapp.com/rate-book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2328,7 +2324,7 @@ function rateThis3() {
   var rating = $('#thisRate3').val();
   console.log(rating)
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rate-book',
+    url: 'https://safe-thicket-54536.herokuapp.com/rate-book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2364,7 +2360,7 @@ function rateThis4() {
   var rating = $('#thisRate4').val();
   
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rate-book',
+    url: 'https://safe-thicket-54536.herokuapp.com/rate-book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2400,7 +2396,7 @@ function rateThis5() {
   var rating = $('#thisRate5').val();
   console.log(rating)
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rate-book',
+    url: 'https://safe-thicket-54536.herokuapp.com/rate-book',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2438,7 +2434,7 @@ function commentuser() {
   var comment = $('#myComment').val();
   console.log(comment)
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/comment/user',
+    url: 'https://safe-thicket-54536.herokuapp.com/comment/user',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2473,7 +2469,7 @@ function displayCommentuser() {
   var owner = localStorage.getItem('bookowners');
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/comments',
+    url: 'https://safe-thicket-54536.herokuapp.com/user/comments',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2517,7 +2513,7 @@ function markread() {
   var user = localStorage.getItem('username');
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/mark-read',
+    url: 'https://safe-thicket-54536.herokuapp.com/mark-read',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2545,7 +2541,7 @@ function notif(){
   var username = localStorage.getItem('username');
   var tokens = localStorage.getItem('token');
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/notifications',
+    url: 'https://safe-thicket-54536.herokuapp.com/notifications',
     type: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
@@ -2817,7 +2813,7 @@ function borrow_return(){
   var borrower = localStorage.getItem('borrower');
   var id = localStorage.getItem('bookid');
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/borrow_return',
+    url: 'https://safe-thicket-54536.herokuapp.com/borrow_return',
     contentType: 'application/json; charset=utf-8',
     method: "POST",
     dataType: "json",
@@ -2843,7 +2839,7 @@ function borrow_return_request() {
   var borrower = localStorage.getItem('bookowners');
   var id = localStorage.getItem('bookid');
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/borrow_return_request',
+    url: 'https://safe-thicket-54536.herokuapp.com/borrow_return_request',
     contentType: 'application/json; charset=utf-8',
     method: "POST",
     dataType: "json",
@@ -2869,7 +2865,7 @@ function rent_return() {
   var borrower = localStorage.getItem('borrower');
   var id = localStorage.getItem('bookid');
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rent_return',
+    url: 'https://safe-thicket-54536.herokuapp.com/rent_return',
     contentType: 'application/json; charset=utf-8',
     method: "POST",
     dataType: "json",
@@ -2903,7 +2899,7 @@ function promptTest() {
     loops = [];
 
     app.request({
-      url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/confirm',
+      url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/confirm',
       method: "POST",
       contentType: 'application/json; charset=utf-8',
       headers: { 'x-access-token': tokens },
@@ -2941,7 +2937,7 @@ function visitviewbooks() {
   var username = localStorage.getItem('bookowners');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/bookshelf',
+    url: 'https://safe-thicket-54536.herokuapp.com/user/bookshelf',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -2973,7 +2969,7 @@ function acceptreq() {
   loops = [];
   
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/verification-code',
+    url: 'https://safe-thicket-54536.herokuapp.com/verification-code',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3015,7 +3011,7 @@ function rejectreq() {
   loops = [];
   
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/bookshelf/remove_borrow',
+    url: 'https://safe-thicket-54536.herokuapp.com/bookshelf/remove_borrow',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3044,7 +3040,7 @@ function myprofilecomments(){
   var tokens = localStorage.getItem('token');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/comments',
+    url: 'https://safe-thicket-54536.herokuapp.com/user/comments',
     type: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
@@ -3086,7 +3082,7 @@ function rateThisUser1() {
 
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rate/user',
+    url: 'https://safe-thicket-54536.herokuapp.com/rate/user',
     type: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
@@ -3118,7 +3114,7 @@ function rateThisUser2() {
 
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rate/user',
+    url: 'https://safe-thicket-54536.herokuapp.com/rate/user',
     type: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
@@ -3151,7 +3147,7 @@ function rateThisUser3() {
   console.log(user);
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rate/user',
+    url: 'https://safe-thicket-54536.herokuapp.com/rate/user',
     type: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
@@ -3182,7 +3178,7 @@ function rateThisUser4() {
 
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rate/user',
+    url: 'https://safe-thicket-54536.herokuapp.com/rate/user',
     type: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
@@ -3213,7 +3209,7 @@ function rateThisUser5() {
 
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/rate/user',
+    url: 'https://safe-thicket-54536.herokuapp.com/rate/user',
     type: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
@@ -3244,7 +3240,7 @@ function showRating() {
 
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/ratings',
+    url: 'https://safe-thicket-54536.herokuapp.com/user/ratings',
     type: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
@@ -3296,7 +3292,7 @@ function showmyrating(){
   var user = localStorage.getItem('username');
   
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/ratings',
+    url: 'https://safe-thicket-54536.herokuapp.com/user/ratings',
     type: "POST",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
@@ -3350,7 +3346,7 @@ function get_followers() {
   var user = localStorage.getItem('username');
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get-followers',
+    url: 'https://safe-thicket-54536.herokuapp.com/get-followers',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3386,7 +3382,7 @@ function get_following() {
   var user = localStorage.getItem('username');
  
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get-following',
+    url: 'https://safe-thicket-54536.herokuapp.com/get-following',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3421,7 +3417,7 @@ function get_other_followers() {
   var user = localStorage.getItem('bookowners');
  
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get-followers',
+    url: 'https://safe-thicket-54536.herokuapp.com/get-followers',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3456,7 +3452,7 @@ function get_other_following() {
   var user = localStorage.getItem('bookowners');
  
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get-following',
+    url: 'https://safe-thicket-54536.herokuapp.com/get-following',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3491,7 +3487,7 @@ function displayfollowers(){
   var user = localStorage.getItem('username');
 
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get-followers',
+    url: 'https://safe-thicket-54536.herokuapp.com/get-followers',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3528,7 +3524,7 @@ function displayfollowing(){
   var user = localStorage.getItem('username');
  
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get-following',
+    url: 'https://safe-thicket-54536.herokuapp.com/get-following',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3564,7 +3560,7 @@ function displayotherfollower(){
   var user = localStorage.getItem('bookowners');
  
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get-followers',
+    url: 'https://safe-thicket-54536.herokuapp.com/get-followers',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3604,7 +3600,7 @@ function displayotherfollowing(){
   var user = localStorage.getItem('bookowners');
  
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/get-following',
+    url: 'https://safe-thicket-54536.herokuapp.com/get-following',
     method: "POST",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3640,31 +3636,23 @@ function view_edit_profile(){
   var username = localStorage.getItem('username');
   var tokens = localStorage.getItem('token');
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/info/'+username ,
+    url: 'https://safe-thicket-54536.herokuapp.com/user/info/'+username ,
     type: "GET",
     contentType: 'application/json; charset=utf-8',
     dataType: "json",
     headers: { 'x-access-token': tokens },
     success: function(data) { 
       localStorage.setItem('user_id', data.user.id);
-      $('#user_id').html('');
-      $('#user_id').append(data.user.id);
       $("input#first_name").html('');
-      $("input#first_name").val(data.user.first_name);
+      $("input#first_name").attr('placeholder', data.user.first_name);
       $("input#last_name").html('');
-      $("input#last_name").val(data.user.last_name);
+      $("input#last_name").attr('placeholder', data.user.last_name);
       $("input#contact_number").html('');
-      $("input#contact_number").val(data.user.contact_number);
-      $("input#username").html('');
-      $("input#username").val(data.user.username);
-      $("input#password").html('');
-      $("input#password").val(data.user.password);
+      $("input#contact_number").attr('placeholder', data.user.contact_number);
       $("input#birth_date").html('');
-      $("input#birth_date").val(moment(data.user.birth_date).format('MMMM D Y'));
-      $("input#gender").html('');
-      $("input#gender").val(data.user.gender);
+      $("input#birth_date").attr('placeholder', moment(data.user.birth_date).format('MMMM D Y'));
       $("input#address").html('');
-      $("input#address").val(data.user.address);
+      $("input#address").attr('placeholder', data.user.address);
       app.dialog.close(); 
     },
     error: function(data) {
@@ -3677,25 +3665,23 @@ function update_profile(){
   app.dialog.preloader();
   var user_id = localStorage.getItem('user_id');
   var tokens = localStorage.getItem('token');
-  var fname = $('input#first_name').val();
-  var lname = $('input#last_name').val();
-  var contact_number = $('input#contact_number').val();
-  var gender = $('input#gender').val();
-  var address = $('input#address').val();
-  var username = $('input#username').val();
+  var fname = $('#first_name').val();
+  var lname = $('#last_name').val();
+  var contact_number = $('#contact_number').val();
+  var gender = $('#gender').val();
+  var address = $('#address').val();
+
   app.request({
-    url: 'http://127.0.0.1:5000/user/info/'+ user_id +'/update',
+    url: 'https://safe-thicket-54536.herokuapp.com/user/info/'+ user_id +'/update',
     type: 'POST',
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     headers: {'x-access-token': tokens},
     data: JSON.stringify({
-      'user_id': user_id,
       'first_name': fname,
       'last_name': lname,
       'contact_number': contact_number,
       'gender': gender,
-      'username': username,
       'address': address
     }),
     crossDomain: true,
@@ -3703,7 +3689,7 @@ function update_profile(){
       console.log(resp);
       app.dialog.close();
       app.dialog.alert('Update Complete');
-      mainView.router.navigate('/');
+      app.router.navigate('/');
       checkLogin();
     },
     error: function(e){
@@ -3720,7 +3706,7 @@ function viewprofile() {
   var username = localStorage.getItem('bookowners');
   loops = [];
   app.request({
-    url: 'https://desolate-basin-69053.herokuapp.com/user/info/' + username,
+    url: 'https://safe-thicket-54536.herokuapp.com/user/info/' + username,
     method: "GET",
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3762,7 +3748,7 @@ function upload_photo(){
 
   app.request({
 
-    url: 'http://127.0.0.1:5000/user/info/'+ user_id +'/upload',
+    url: 'https://safe-thicket-54536.herokuapp.com/user/info/'+ user_id +'/upload',
     type: 'POST',
     crossDomain: true,
     headers: { 'x-access-token': tokens },
@@ -3772,15 +3758,19 @@ function upload_photo(){
     contentType: "multipart/form-data",
     success: function(data){
       app.dialog.close();
-      router.currentPageEl();
       app.dialog.alert('Upload Successful');
+      app.views.main.router.refreshPage();
     },
     error: function(e){
       app.dialog.close();
       app.dialog.alert("Upload Failed");
       console.log(e);
+    },
+    complete: function(e){
+      app.dialog.close();
     }
   });
+  app.dialog.close();
 }
 
 function readURL(input) {
@@ -3806,10 +3796,9 @@ function show_profpic(){
   app.dialog.preloader();
   var user_id = localStorage.getItem('user_id');
   var tokens = localStorage.getItem('token');
-  console.log(user_id);
 
   app.request({
-    url: 'http://127.0.0.1:5000/user/info/'+ user_id +'/photo',
+    url: 'https://safe-thicket-54536.herokuapp.com/user/info/'+ user_id +'/photo',
     method: 'GET',
     contentType: 'application/json; charset=utf-8',
     headers: { 'x-access-token': tokens },
@@ -3826,8 +3815,6 @@ function show_profpic(){
       console.log(e);
     }
   });
-  // var img = "https://res.cloudinary.com/dal7ygjnn/image/upload/v1558302177/sample_profpic.jpg"
-  // document.getElementById("imongmama2").src = img;
 }
 
 
